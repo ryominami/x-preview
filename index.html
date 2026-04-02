@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>X Marketing Preview</title>
+<style>
+:root{--bg:#0a0a0a;--c1:#111;--bd:#1e1e1e;--tx:#e0e0e0;--sub:#666;--ac:#3b82f6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;
+background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;
+-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+.w{max-width:580px;margin:0 auto;padding:10px 12px 80px}
+
+/* Header */
+.hd{padding:18px 0 10px;text-align:center;border-bottom:1px solid var(--bd);margin-bottom:14px}
+.hd h1{font-size:17px;font-weight:800;letter-spacing:-.3px;
+background:linear-gradient(135deg,#3b82f6,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hd small{font-size:11px;color:var(--sub)}
+
+/* Tabs — sticky */
+.tabs{position:sticky;top:0;z-index:10;background:var(--bg);display:flex;gap:6px;
+overflow-x:auto;-webkit-overflow-scrolling:touch;padding:8px 0;border-bottom:1px solid var(--bd);margin-bottom:14px}
+.tab{flex-shrink:0;padding:7px 14px;border-radius:20px;background:#161616;border:1px solid var(--bd);
+color:var(--sub);font-size:12px;font-weight:600;cursor:pointer;transition:.15s;-webkit-user-select:none}
+.tab.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.tab .n{font-size:10px;opacity:.6;margin-left:2px}
+.pn{display:none}.pn.on{display:block}
+
+/* Date group */
+.dg{margin-bottom:18px}
+.dl{font-size:11px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:1px;padding:0 2px 6px}
+
+/* Card */
+.card{background:var(--c1);border:1px solid var(--bd);border-radius:16px;margin-bottom:12px;overflow:hidden}
+.ct{padding:14px 14px 8px}
+.cm{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+.pill{font-size:11px;font-weight:700;color:#fff;padding:3px 10px;border-radius:10px;background:var(--c)}
+.cost{font-size:11px;color:var(--sub);background:#1a1a1a;padding:2px 8px;border-radius:8px}
+.summary{font-size:14px;color:#ccc;font-weight:500;margin:4px 0 8px}
+
+/* X link buttons */
+.xl{display:flex;gap:6px;flex-wrap:wrap}
+.x-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#fff;
+background:#000;border:1px solid #333;padding:6px 14px;border-radius:20px;
+text-decoration:none;transition:.15s;-webkit-user-select:none}
+.x-btn:active{background:var(--ac);border-color:var(--ac)}
+.x-btn svg{flex-shrink:0}
+.x-btn.sm{font-size:10px;padding:3px 10px;border-radius:14px}
+
+/* Pattern accordion */
+.cp-area{padding:0 10px 4px}
+.pat{background:#0a0a0a;border:1px solid var(--bd);border-radius:12px;margin-bottom:8px;
+overflow:hidden;cursor:pointer;transition:border-color .15s;-webkit-user-select:none}
+.pat:active{border-color:var(--ac)}
+.pat-h{display:flex;justify-content:space-between;align-items:center;padding:12px 14px}
+.pat-l{font-size:13px;font-weight:600;color:#ccc}
+.char-ok{font-size:10px;color:#22c55e;background:#0a2010;padding:2px 8px;border-radius:6px}
+.char-warn{font-size:10px;color:#f59e0b;background:#1a1500;padding:2px 8px;border-radius:6px}
+.char-over{font-size:10px;color:#ef4444;background:#1a0505;padding:2px 8px;border-radius:6px}
+.pat-b{padding:0 14px 14px}
+.ptxt{font-size:14px;line-height:1.9;white-space:pre-wrap;color:#f0f0f0;font-family:inherit;
+background:none;border:none;padding:6px 0;-webkit-user-select:text}
+.pat-a{display:flex;justify-content:flex-end;gap:8px;padding-top:6px}
+
+/* Buttons */
+.btn{font-size:12px;font-weight:600;border-radius:10px;padding:8px 20px;cursor:pointer;
+transition:.15s;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:4px;
+-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.btn.cp{color:var(--ac);background:transparent;border:1.5px solid var(--ac)}
+.btn.cp:active,.btn.cp.done{background:var(--ac);color:#fff}
+.btn.dl{color:var(--ac);background:#0a0a0a;border:1px solid var(--bd)}
+.btn.dl:active{background:var(--ac);color:#fff}
+.btn.sm{font-size:10px;padding:5px 12px}
+
+/* Media */
+.cm-area{padding:0 10px 10px}
+.mi{border:1px solid var(--bd);border-radius:12px;overflow:hidden;margin-bottom:8px;background:#000}
+.mi video,.mi img{width:100%;display:block}
+.mb{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:#0a0a0a}
+.mt{font-size:9px;font-weight:700;color:var(--sub);background:#1a1a1a;padding:2px 6px;border-radius:4px}
+
+/* Gallery */
+.gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.gc{background:var(--c1);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.gc video,.gc img{width:100%;display:block}
+.gi{display:flex;justify-content:space-between;align-items:center;padding:8px 10px}
+.gi span{font-size:10px;color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;margin-right:6px}
+
+/* Trend */
+.trend{background:var(--c1);border:1px solid var(--bd);border-radius:16px;padding:16px;
+font-size:13px;color:#bbb;white-space:pre-wrap;line-height:1.7}
+.th1{font-size:16px;color:#fff;margin:14px 0 6px;font-weight:700}
+.th2{font-size:14px;color:#ddd;margin:12px 0 4px;font-weight:600}
+.th3{font-size:13px;color:#bbb;margin:8px 0 3px;font-weight:600}
+.tli{padding-left:12px;position:relative;margin:2px 0}
+.tli::before{content:"\2022";position:absolute;left:0;color:var(--ac)}
+.trend a{color:var(--ac);text-decoration:none}
+
+.empty{color:#444;text-align:center;padding:40px 20px;font-size:14px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+background:#22c55e;color:#fff;padding:10px 28px;border-radius:24px;
+font-size:13px;font-weight:600;opacity:0;transition:.25s;pointer-events:none;z-index:99}
+.toast.show{opacity:1}
+
+@media(max-width:480px){.w{padding:8px 8px 60px}.ptxt{font-size:13px}.gg{grid-template-columns:1fr}}
+
+/* Lock screen */
+#lock{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;flex-direction:column;
+align-items:center;justify-content:center;gap:16px}
+#lock.off{display:none}
+#lock h2{font-size:16px;font-weight:700;color:#888}
+#lock input{width:220px;padding:12px 16px;border-radius:12px;border:1px solid #333;background:#111;
+color:#fff;font-size:15px;text-align:center;outline:none}
+#lock input:focus{border-color:var(--ac)}
+#lock button{padding:10px 32px;border-radius:12px;border:none;background:var(--ac);color:#fff;
+font-size:14px;font-weight:600;cursor:pointer}
+#lock .err{color:#ef4444;font-size:12px;height:16px}
+#app{display:none}
+#app.on{display:block}
+</style>
+</head>
+<body>
+<div id="lock">
+    <h2>X Marketing Preview</h2>
+    <input type="password" id="pw" placeholder="Password" autocomplete="off" autofocus
+           onkeydown="if(event.key==='Enter')unlock()">
+    <button onclick="unlock()">Enter</button>
+    <div class="err" id="err"></div>
+</div>
+<div id="app">
+<div class="w">
+    <div class="hd"><h1>X Marketing Preview</h1><small>Generated 2026-04-03 08:20</small></div>
+
+    <div class="tabs">
+        <div class="tab on" onclick="sw('p0',this)">Today<span class="n">(4)</span></div>
+        <div class="tab" onclick="sw('p1',this)">Media<span class="n">(5)</span></div>
+        <div class="tab" onclick="sw('p2',this)">Trend</div>
+        <div class="tab" onclick="sw('p3',this)">Archive<span class="n">(4)</span></div>
+    </div>
+
+    <div id="p0" class="pn on"><div class="dg"><div class="dl">2026-04-03</div>
+    <article class="card">
+        <div class="ct"><div class="cm"><span class="cost">$1.78</span></div><div class="xl"><a class="x-btn" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-btn" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-btn" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a></div></div>
+        <div class="cp-area">
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">本文（コピペ用）</span><span class="char-ok">190字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b0-0">Kling 3.0で映画のカメラワーク5種、プロンプトだけで再現できるか検証してみた🎬
+
+①Rack Focus — 前景→人物へのピント移動
+②Dolly Zoom — 背景が歪むヴァーティゴ効果
+③Whip Pan — 高速水平パンでシーン転換
+④Low Angle Tracking — 地面近くから見上げる追跡
+⑤Crane Shot — 地上→俯瞰への垂直移動
+
+同一画像から5パターン生成。
+プロンプトと結果はリプ欄に👇</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b0-0')">Copy</button></div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">リプ欄1（プロンプト全文 — コピペ用）</span><span class="char-over">348字 Over!</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b0-1">使用プロンプト全文（全てKling V3 Pro / 8秒 / 16:9 / 音声ON）
+
+①Rack Focus:
+「rack focus from foreground cherry blossom to character face, slow 2-second transition, cinematic shallow depth of field」
+
+②Dolly Zoom:
+「dolly zoom (vertigo effect), camera moves backward while zooming in on face, background compression effect」
+
+③Whip Pan:
+「whip pan from left to right with motion blur, transitioning from neon signs to reveal character」</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b0-1')">Copy</button></div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">リプ欄2（プロンプト続き）</span><span class="char-over">295字 Over!</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b0-2">④Low Angle Tracking:
+「low angle tracking shot, camera near ground level looking up, puddle reflections, character walks forward」
+
+⑤Crane Shot:
+「crane shot starting at ground level near feet, slowly rises vertically above rooftops, epic scale reveal」
+
+元画像はNano Banana 2 Editで生成（$0.03）
+動画5本の合計コスト: $1.78（¥267）
+
+ポイント: カメラワークの名前を英語でそのまま書くのが一番効く✨</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b0-2')">Copy</button></div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">リプ欄3（検証結果の感想）</span><span class="char-warn">221字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b0-3">検証結果の印象:
+
+Crane Shot → 垂直移動の再現度が一番高い。スケール感も出る
+Low Angle → 地面からの見上げ構図、かなり自然
+Rack Focus → ピント移動は効くが速度の細かい制御はまだ粗い
+Whip Pan → 動きは出るがモーションブラーの表現は発展途上
+Dolly Zoom → 背景圧縮の再現が最も難しい（挑戦的なプロンプトほど面白い結果に）
+
+映画のカメラワーク用語をそのまま英語で入れると、
+Klingが「あ、これね」って理解してくれる感覚がある。</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b0-3')">Copy</button></div>
+            </div>
+        </div></div>
+        <div class="cm-area"><div class="mi"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="mb"><span class="mt">MP4</span><a class="btn dl" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">Download</a></div></div><div class="mi"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="mb"><span class="mt">MP4</span><a class="btn dl" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">Download</a></div></div><div class="mi"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="mb"><span class="mt">MP4</span><a class="btn dl" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">Download</a></div></div><div class="mi"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="mb"><span class="mt">MP4</span><a class="btn dl" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">Download</a></div></div><div class="mi"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="mb"><span class="mt">IMG</span><a class="btn dl" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">Download</a></div></div></div>
+    </article>
+    <article class="card">
+        <div class="ct"><div class="cm"><span class="pill" style="--c:#8b5cf6">&#x1F4AC; Insight</span></div><div class="summary">Seedance 2.0公開 — 動画生成AI勢力図の変化</div><div class="xl"></div></div>
+        <div class="cp-area">
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">パターンA（勢力図整理型 — 推奨）</span><span class="char-ok">198字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b1-0">Seedance 2.0が正式に降りてきた。
+1.6M viewsでタイムラインがざわついてる。
+
+で、ここ1-2週間で感じるのは
+動画生成AIの「使い分け」がはっきりしてきたこと。
+
+Kling → カメラワーク制御・アクション
+Vidu → キャラ一貫性・リファレンス
+Hailuo → 自然な動き・雰囲気
+Seedance → モーション品質（未検証）
+
+全部使える必要はなくて、
+自分の作風に合うものを深掘りするほうが結果出る印象。</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b1-0')">Copy</button></div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">パターンB（体験起点型）</span><span class="char-ok">171字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b1-1">Seedance 2.0の話題でTLが埋まってるけど、
+自分はまだ触れてないので正直に書くと、
+
+いま一番手に馴染んでるのはKling 3.0。
+昨日も映画のカメラワーク5種をプロンプトで検証してて、
+Crane ShotとLow Angleの再現度がかなり良かった。
+
+ツールは増え続けるけど、
+「自分の制作スタイルに合うやつを深く使う」が一番効率いい気がしてる。</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b1-1')">Copy</button></div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">パターンC（問いかけ型）</span><span class="char-ok">167字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b1-2">動画生成AI、2026年だけでもう何モデル出てるんだろう😳
+
+Seedance 2.0が公開されて、選択肢がまた増えた。
+Kling / Vidu / Hailuo / Sora / Seedance / Wan...
+
+正直、全部追うのは無理になってきてるので
+自分は「カメラワーク制御」と「キャラ一貫性」に絞って検証してる。
+
+みんなは何を軸にツール選んでるんだろう。</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b1-2')">Copy</button></div>
+            </div>
+        </div></div>
+        <div class="cm-area"></div>
+    </article>
+    <article class="card">
+        <div class="ct"><div class="cm"><span class="pill" style="--c:#f59e0b">&#x1F50D; Compare</span><span class="cost">$1.78</span></div><div class="summary">## コンセプト</div><div class="xl"><a class="x-btn" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-btn" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-btn" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a></div></div>
+        <div class="cp-area">
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">Draft 1</span><span class="char-ok">190字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b2-0">Kling 3.0で映画のカメラワーク5種、プロンプトだけで再現できるか検証してみた🎬
+
+①Rack Focus — 前景→人物へのピント移動
+②Dolly Zoom — 背景が歪むヴァーティゴ効果
+③Whip Pan — 高速水平パンでシーン転換
+④Low Angle Tracking — 地面近くから見上げる追跡
+⑤Crane Shot — 地上→俯瞰への垂直移動
+
+同一画像から5パターン生成。
+プロンプトと結果はリプ欄に👇</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b2-0')">Copy</button></div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">Draft 2</span><span class="char-over">579字 Over!</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b2-1">①Rack Focus:
+「rack focus from foreground cherry blossom to character face, slow 2-second transition, cinematic shallow depth of field」
+
+②Dolly Zoom:
+「dolly zoom (vertigo effect), camera moves backward while zooming in on face, background compression effect」
+
+③Whip Pan:
+「whip pan from left to right with motion blur, transitioning from neon signs to reveal character」
+
+④Low Angle Tracking:
+「low angle tracking shot, camera near ground level looking up, puddle reflections, character walks forward」
+
+⑤Crane Shot:
+「crane shot starting at ground level near feet, slowly rises vertically above rooftops, epic scale reveal」
+
+全てKling V3 Pro / 8秒 / 16:9 / 音声ON
+元画像はNano Banana 2 Editで生成（$0.03）</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b2-1')">Copy</button></div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">Draft 3</span><span class="char-ok">216字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b2-2">Kling 3.0、映画のカメラワークがプロンプトで指定できる時代になってた😳
+
+5種類の映画技法を同じ画像から検証:
+🥇 Crane Shot — 垂直移動の再現度が一番高い
+🥈 Low Angle — 地面からの見上げ構図、かなり自然
+🥉 Rack Focus — ピント移動は効くが速度制御はまだ粗い
+△ Whip Pan — 動きは出るがモーションブラーは不完全
+△ Dolly Zoom — 背景圧縮の再現は発展途上
+
+プロンプト全文はリプ欄に👇
+
+[添付: 5種の動画 or 比較グリッド]</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b2-2')">Copy</button></div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">Draft 4</span><span class="char-ok">183字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b2-3">海外のKlingクリエイターが映画的カメラワークをプロンプトで指定してて、
+気になったので自分でも5種類試してみた。
+
+Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
+
+で、驚いたのがCrane Shotの再現度。
+地面から空への垂直移動がちゃんとスムーズに入る。
+
+全部同じ画像からの検証。
+プロンプトと結果を全部リプ欄に載せておきます🎬</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b2-3')">Copy</button></div>
+            </div>
+        </div></div>
+        <div class="cm-area"></div>
+    </article>
+    <article class="card">
+        <div class="ct"><div class="cm"><span class="pill" style="--c:#3b82f6">&#x1F527; Workflow</span></div><div class="summary">画像→動画の実践ワークフロー全公開</div><div class="xl"><a class="x-btn" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div></div>
+        <div class="cp-area">
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">パターンA（ステップ公開型 — 推奨・ブックマーク狙い）</span><span class="char-ok">191字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b3-0">AI動画、「画像から動画」が一番安定する。
+自分が毎回使ってるフローを全部書いてみる🎬
+
+① Nano Banana 2 Editでシーン画像生成（$0.03/枚）
+② プロンプトでカメラワークと動きを設計
+③ Kling V3 Pro I2Vで動画化（$0.35/本）
+④ 気に入らなければ画像からやり直し
+
+1シーン $0.38、30秒動画で$2くらい。
+画像の時点で構図を追い込めるから、動画の成功率がかなり上がる。</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b3-0')">Copy</button></div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">パターンB（比較視点型）</span><span class="char-ok">172字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b3-1">テキストから直接動画を生成するT2Vと、
+画像を挟むI2Vのどっちがいいか問題、
+自分の中では完全にI2V派になった。
+
+理由:
+✅ 構図を画像の時点で確認できる
+✅ 失敗しても画像だけやり直せる（$0.03）
+✅ キャラの見た目が安定する
+✅ カメラワーク指示がよく効く
+
+NB2 Edit → Kling V3 Proの組み合わせ、
+コスパと品質のバランスが今一番いい気がしてる。</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b3-1')">Copy</button></div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h"><span class="pat-l">パターンC（海外発見起点型）</span><span class="char-ok">179字</span></div>
+            <div class="pat-b" style="display:none">
+                <pre class="ptxt" id="b3-2">海外の元Disneyクリエイターが
+NB→Kling動画のワークフローを公開してて、
+「あ、自分もほぼ同じことやってる」と気づいた。
+
+画像を先に作って、そこから動画化する。
+シンプルだけど、これが一番失敗が少ない。
+
+NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
+1シーン40円。失敗しても画像からリトライ可能。
+
+プロも同じ結論に辿り着いてるのは心強い。</pre>
+                <div class="pat-a"><button class="btn cp" onclick="event.stopPropagation();cp('b3-2')">Copy</button></div>
+            </div>
+        </div></div>
+        <div class="cm-area"></div>
+    </article></div></div>
+    <div id="p1" class="pn"><div class="gg"><div class="gc"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn dl sm" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn dl sm" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn dl sm" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn dl sm" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn dl sm" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">DL</a></div></div></div></div>
+    <div id="p2" class="pn"><div class="trend"><h2 class="th1">トレンドレポート 2026-04-03</h2>
+
+<h3 class="th2">今日の空気</h3>
+<div class="tli">Seedance 2.0がHiggsfield/OpenArtで正式公開（1.6M views, 1779 likes）→ 超バズ中</div>
+<div class="tli">ただしRyoは使えない → **Seedance以外のテクニック検証で差別化**</div>
+<div class="tli">Kling 3.0のアクション/物理一貫性が継続して高評価</div>
+<div class="tli">海外で「NB画像→Kling動画」のハイブリッドワークフローが定番化</div>
+<div class="tli">元Disney/PrimeVideoクリエイターがKling検証を出し始めた（プロ参入の兆候）</div>
+
+<h3 class="th2">S級ネタ（即日対応）</h3>
+
+<h4 class="th3">1. Kling 3.0 × BigMotion_ai：アクション物理一貫性</h4>
+<div class="tli">**ソース**: <a class="x-btn sm" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a> (31 likes)</div>
+<div class="tli">なぜS級: 「物理一貫性」がバズワード。日本語圏で未検証。RyoはKling CPP</div>
+<div class="tli">Ryoの切り口: **戦闘/アクションシーンのプロンプトで、物理破綻を減らすテクニック**を検証</div>
+<div class="tli">検証方法: 同一シーンで「物理指示あり/なし」のBefore/After</div>
+<div class="tli">ピラー: P1(ブレイクスルー) + P2(ワークフロー)</div>
+
+<h4 class="th3">2. NB2 Edit → Kling 3.0 ハイブリッドワークフロー</h4>
+<div class="tli">**ソース**: <a class="x-btn sm" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a> (元Disneyスタッフ)</div>
+<div class="tli">なぜS級: 海外プロが使い始めたワークフロー。Ryoの既存パイプラインと一致</div>
+<div class="tli">Ryoの切り口: **NB2 Editでシーン画像→Kling I2Vの実践フロー全公開**。コスト$0.38/本</div>
+<div class="tli">検証方法: 1シーン生成の全プロセスを動画で見せる</div>
+<div class="tli">ピラー: P2(ワークフロー) — ブックマーク狙い</div>
+
+<h4 class="th3">3. 低アングル/特殊カメラワークのプロンプト制御</h4>
+<div class="tli">**ソース**: <a class="x-btn sm" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a> (PrimeVideoクリエイター)</div>
+<div class="tli">なぜS級: 映画的カメラワークをプロンプトだけで指定する系。さっきのラックフォーカスの延長</div>
+<div class="tli">Ryoの切り口: **ドリーズーム/ウィップパン/低アングル追跡など、映画技法5種をKling 3.0で検証**</div>
+<div class="tli">検証方法: 同一シーン × 5種のカメラワークプロンプト</div>
+<div class="tli">ピラー: P3(比較) — 保存価値が最高に高い</div>
+
+<h3 class="th2">A級ネタ（今週対応）</h3>
+
+<h4 class="th3">4. Runway vs Kling — 安定性 vs 速度</h4>
+<div class="tli">ソース: <a class="x-btn sm" href="https://x.com/0xMeta_crypto/status/2039497696617037892" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a></div>
+<div class="tli">切り口: 同一プロンプトで「品質」「速度」「コスト」の3軸比較</div>
+
+<h4 class="th3">5. オリジナルIP開発のAIパイプライン</h4>
+<div class="tli">ソース: <a class="x-btn sm" href="https://x.com/MarkLalonde68/status/2039798743835222442" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a></div>
+<div class="tli">切り口: NB2キーフレーム→Kling動画→ElevenLabs音声で短編制作</div>
+
+<h3 class="th2">推奨投稿（今日の3本）</h3>
+
+| 時間 | ピラー | テーマ | ネタ# |
+|------|--------|--------|-------|
+| 7:00 | P4 考察 | Seedance 2.0公開の反応分析（自分は使えないけど勢力図整理） | — |
+| 12:00 | P1 ブレイクスルー | **映画技法5種をKling 3.0プロンプトで検証** | #3 |
+| 21:00 | P2 ワークフロー | NB2 Edit→Kling 3.0の実践フロー全公開 | #2 |
+
+<h3 class="th2">コスト: $0.23</h3>
+</div></div>
+    <div id="p3" class="pn"><div class="dg"><div class="dl">2026-04-02</div>
+    <article class="card">
+        <div class="ct"><div class="cm"></div><div class="xl"></div></div>
+        <div class="cp-area"></div>
+        <div class="cm-area"></div>
+    </article>
+    <article class="card">
+        <div class="ct"><div class="cm"><span class="pill" style="--c:#8b5cf6">&#x1F4AC; Insight</span></div><div class="summary">Sora終了後の勢力図</div><div class="xl"></div></div>
+        <div class="cp-area"></div>
+        <div class="cm-area"></div>
+    </article>
+    <article class="card">
+        <div class="ct"><div class="cm"><span class="pill" style="--c:#3b82f6">&#x1F527; Workflow</span></div><div class="summary">Kling 3.0のラックフォーカス × マルチショットで短編制作</div><div class="xl"></div></div>
+        <div class="cp-area"></div>
+        <div class="cm-area"></div>
+    </article>
+    <article class="card">
+        <div class="ct"><div class="cm"><span class="pill" style="--c:#ef4444">&#x1F525; Breakthrough</span></div><div class="summary">Seedance 2.0 Omni-Reference実検証</div><div class="xl"></div></div>
+        <div class="cp-area"></div>
+        <div class="cm-area"></div>
+    </article></div></div>
+</div>
+</div><!-- /app -->
+<div class="toast" id="toast"></div>
+<script>
+const H='kamui2026';
+function unlock(){const v=document.getElementById('pw').value;
+if(v===H){document.getElementById('lock').classList.add('off');
+document.getElementById('app').classList.add('on');sessionStorage.setItem('xpw','1')}
+else{document.getElementById('err').textContent='Wrong password'}}
+if(sessionStorage.getItem('xpw')==='1'){document.getElementById('lock').classList.add('off');
+document.getElementById('app').classList.add('on')}
+</script>
+<script>
+function sw(id,el){document.querySelectorAll('.pn').forEach(e=>e.classList.remove('on'));
+document.querySelectorAll('.tab').forEach(e=>e.classList.remove('on'));
+document.getElementById(id).classList.add('on');el.classList.add('on');window.scrollTo(0,0)}
+
+function toggle(el){const b=el.querySelector('.pat-b');if(!b)return;
+const open=b.style.display!=='none';
+el.closest('.cp-area').querySelectorAll('.pat-b').forEach(x=>x.style.display='none');
+b.style.display=open?'none':'block'}
+
+function cp(id){const el=document.getElementById(id);const t=el.textContent;
+if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>toast('Copied!'))}
+else{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';
+document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);toast('Copied!')}
+const b=el.closest('.pat-b').querySelector('.btn.cp');
+b.textContent='Copied!';b.classList.add('done');
+setTimeout(()=>{b.textContent='Copy';b.classList.remove('done')},1200)}
+
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');
+setTimeout(()=>t.classList.remove('show'),1200)}
+</script>
+</body>
+</html>
