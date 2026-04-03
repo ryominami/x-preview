@@ -144,6 +144,10 @@ background:#f0f9ff;border:1px solid #bfdbfe;padding:10px 18px;border-radius:24px
 /* Pattern header right side */
 .pat-right{display:flex;align-items:center;gap:8px}
 
+/* Char progress bar */
+.char-bar{height:3px;background:#e2e8f0;border-radius:2px;margin:0 16px}
+.char-fill{height:100%;border-radius:2px;transition:width .3s}
+
 /* Date nav for archive */
 .date-nav{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px 0 12px;scrollbar-width:none}
 .date-nav::-webkit-scrollbar{display:none}
@@ -199,6 +203,27 @@ background:#fff;min-height:48px;transition:.15s}
 .trend-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;padding-left:38px}
 .trend-cost{font-size:12px;color:var(--sub);text-align:right;padding:8px 4px;font-weight:500}
 
+/* Post progress */
+.progress-bar-container{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.progress-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13px;font-weight:600;color:var(--tx)}
+.progress-info span:last-child{color:var(--sub)}
+.progress-track{height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);border-radius:3px;transition:width .5s ease}
+
+/* Article expand */
+.article-expand{padding:0 16px 16px}
+.article-body{font-size:14px;color:#374151;line-height:1.75;max-height:60vh;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px;background:#f8fafc;border:1px solid var(--bd);border-radius:12px}
+.btn-expand{font-size:12px;font-weight:600;color:var(--ac);background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:8px 16px;cursor:pointer;min-height:44px}
+.article-actions{display:flex;gap:8px;padding:0 16px 16px}
+.article-actions .btn-copy{flex:1}.article-actions .btn-post{flex:2}
+
+/* Share button */
+.btn-share{display:flex;align-items:center;justify-content:center;width:48px;min-height:48px;color:var(--sub);background:#f8fafc;border:1px solid var(--bd);border-radius:12px;cursor:pointer}
+.btn-share:active{background:var(--ac);color:#fff}
+
+/* Engagement numbers */
+.eng-num{display:inline-block;background:#f0fdf4;color:#16a34a;font-weight:700;padding:1px 6px;border-radius:6px;font-size:12px;margin:0 2px}
+
 /* Misc */
 .sec-title{font-size:13px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.5px;padding:10px 4px 8px;display:flex;align-items:center;gap:6px}
 .empty{color:#94a3b8;text-align:center;padding:50px 20px;font-size:15px;font-weight:500}
@@ -226,7 +251,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
 <div id="app">
 <div class="w">
     <div class="hdr">
-        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-03 12:19</small></div>
+        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-03 12:28</small></div>
         <div class="hdr-stat">
             <div class="stat-chip"><strong>4</strong> posts</div>
             <div class="stat-chip"><strong>5</strong> media</div>
@@ -234,6 +259,10 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
     </div>
 
     <div id="p0" class="pn on">
+        <div class="progress-bar-container">
+            <div class="progress-info"><span>Today's Posts</span><span id="prog-text">4 drafts</span></div>
+            <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+        </div>
         <div class="sec-title">&#x23F0; Schedule</div>
         <div class="sched-scroll">
             <div class="sched-card" onclick="document.getElementById('2026-04-03-P4-seedance-landscape.md').scrollIntoView({behavior:'smooth',block:'start'})" style="border-top:3px solid #7c3aed">
@@ -264,8 +293,9 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">パターンA（勢力図整理型 — 推奨）</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 366字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">366/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -293,7 +323,10 @@ Seedance → モーション品質（未検証）
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b0-0')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b0-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -301,8 +334,9 @@ Seedance → モーション品質（未検証）
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンB（体験起点型）</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 315字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">315/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -326,7 +360,10 @@ Crane ShotとLow Angleの再現度がかなり良かった。
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b0-1')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b0-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -334,8 +371,9 @@ Crane ShotとLow Angleの再現度がかなり良かった。
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンC（問いかけ型）</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 298字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">298/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -359,7 +397,10 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b0-2')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b0-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -369,15 +410,16 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-1" onclick="event.stopPropagation();toggleStatus('card-1')">Pending</button></div>
             <p class="summary">## コンセプト</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">Draft 1</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 334字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">334/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -402,7 +444,10 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-0')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -410,8 +455,9 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 2</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 710字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">710/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -443,7 +489,10 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-1')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -451,8 +500,9 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 3</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 402字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">402/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -479,7 +529,10 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-2')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -487,8 +540,9 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 4</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 328字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">328/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -513,7 +567,10 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-3')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1-3')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -530,8 +587,9 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">パターンA（ステップ公開型 — 推奨・ブックマーク狙い）</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 346字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">346/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -556,7 +614,10 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b2-0')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b2-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -564,8 +625,9 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンB（比較視点型）</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 327字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">327/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -592,7 +654,10 @@ NB2 Edit → Kling V3 Proの組み合わせ、
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b2-1')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b2-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -600,8 +665,9 @@ NB2 Edit → Kling V3 Proの組み合わせ、
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンC（海外発見起点型）</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 327字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">327/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -627,7 +693,10 @@ NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b2-2')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b2-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -637,15 +706,16 @@ NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
         <div class="card-top">
             <div class="card-meta"><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-3" onclick="event.stopPropagation();toggleStatus('card-3')">Pending</button></div>
             
-            <div class="x-row"><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
         </div>
         <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">&#x2B07; Image</a></div></div></div>
         <div class="card-drafts">
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">本文（コピペ用）</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 334字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">334/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
                     <div class="tweet-head">
@@ -721,7 +791,10 @@ Klingが「あ、これね」って理解してくれる感覚がある。</pre>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
                 <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b3-0')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b3-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
@@ -732,17 +805,17 @@ Klingが「あ、これね」って理解してくれる感覚がある。</pre>
     <div id="p2" class="pn"><div class="sec-title">&#x1F4CA; Trend Intelligence</div><div class="mood-card"><div class="mood-label">&#x1F30A; Today's Mood</div><div class="mood-text">Seedance 2.0がHiggsfield/OpenArtで正式公開（1.6M views, 1779 likes）→ 超バズ中 ただしRyoは使えない → **Seedance以外のテクニック検証で差別化** Kling 3.0のアクション/物理一貫性が継続して高評価 海外で「NB画像→Kling動画」のハイブリッドワークフローが定番化 元Disney/PrimeVideoクリエイターがKling検証を出し始めた（プロ参入の兆候）</div></div>
         <div class="trend-item rank-s">
             <div class="trend-head"><span class="rank-badge rank-s-bg">S</span><span class="trend-title">1. Kling 3.0 × BigMotion_ai：アクション物理一貫性</span></div>
-            <div class="trend-body"><div class="trend-detail">なぜS級: 「物理一貫性」がバズワード。日本語圏で未検証。RyoはKling CPP</div><div class="trend-detail">Ryoの切り口: **戦闘/アクションシーンのプロンプトで、物理破綻を減らすテクニック**を検証</div><div class="trend-detail">検証方法: 同一シーンで「物理指示あり/なし」のBefore/After</div><div class="trend-detail">ピラー: P1(ブレイクスルー) + P2(ワークフロー)</div></div>
+            <div class="trend-body"><div class="trend-detail">なぜS級: 「物理一貫性」がバズワード。日本語圏で未検証。RyoはKling CPP</div><div class="trend-detail">Ryoの切り口: <strong>戦闘/アクションシーンのプロンプトで、物理破綻を減らすテクニック</strong>を検証</div><div class="trend-detail">検証方法: 同一シーンで「物理指示あり/なし」のBefore/After</div><div class="trend-detail">ピラー: P1(ブレイクスルー) + P2(ワークフロー)</div></div>
             <div class="trend-links"><a class="x-chip sm" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a></div>
         </div>
         <div class="trend-item rank-s">
             <div class="trend-head"><span class="rank-badge rank-s-bg">S</span><span class="trend-title">2. NB2 Edit → Kling 3.0 ハイブリッドワークフロー</span></div>
-            <div class="trend-body"><div class="trend-detail">なぜS級: 海外プロが使い始めたワークフロー。Ryoの既存パイプラインと一致</div><div class="trend-detail">Ryoの切り口: **NB2 Editでシーン画像→Kling I2Vの実践フロー全公開**。コスト$0.38/本</div><div class="trend-detail">検証方法: 1シーン生成の全プロセスを動画で見せる</div><div class="trend-detail">ピラー: P2(ワークフロー) — ブックマーク狙い</div></div>
+            <div class="trend-body"><div class="trend-detail">なぜS級: 海外プロが使い始めたワークフロー。Ryoの既存パイプラインと一致</div><div class="trend-detail">Ryoの切り口: <strong>NB2 Editでシーン画像→Kling I2Vの実践フロー全公開</strong>。コスト$0.38/本</div><div class="trend-detail">検証方法: 1シーン生成の全プロセスを動画で見せる</div><div class="trend-detail">ピラー: P2(ワークフロー) — ブックマーク狙い</div></div>
             <div class="trend-links"><a class="x-chip sm" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
         </div>
         <div class="trend-item rank-s">
             <div class="trend-head"><span class="rank-badge rank-s-bg">S</span><span class="trend-title">3. 低アングル/特殊カメラワークのプロンプト制御</span></div>
-            <div class="trend-body"><div class="trend-detail">なぜS級: 映画的カメラワークをプロンプトだけで指定する系。さっきのラックフォーカスの延長</div><div class="trend-detail">Ryoの切り口: **ドリーズーム/ウィップパン/低アングル追跡など、映画技法5種をKling 3.0で検証**</div><div class="trend-detail">検証方法: 同一シーン × 5種のカメラワークプロンプト</div><div class="trend-detail">ピラー: P3(比較) — 保存価値が最高に高い</div></div>
+            <div class="trend-body"><div class="trend-detail">なぜS級: 映画的カメラワークをプロンプトだけで指定する系。さっきのラックフォーカスの延長</div><div class="trend-detail">Ryoの切り口: <strong>ドリーズーム/ウィップパン/低アングル追跡など、映画技法5種をKling 3.0で検証</strong></div><div class="trend-detail">検証方法: 同一シーン × 5種のカメラワークプロンプト</div><div class="trend-detail">ピラー: P3(比較) — 保存価値が最高に高い</div></div>
             <div class="trend-links"><a class="x-chip sm" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
         </div>
         <div class="trend-item rank-a">
@@ -796,8 +869,12 @@ Klingが「あ、これね」って理解してくれる感覚がある。</pre>
             <div class="article-card">
                 <div class="article-head"><span class="article-badge">verification</span><h3 class="article-title">検証プロデュース 2026-04-02</h3></div>
                 <p class="article-preview">1. **画像**: 既存キャラ参照を使用（`09_AIVideo-studio/Character/` から選択）→ $0 2. **動画**: Seedance 2.0（検証対象そのもの）→ 8秒 1本 ~$0.50 3. 合計: **~$0.50** ``` Step 1: ToolSearch → seedance v1.5 pro i2v の submit/status/result を...</p>
+                <div class="article-expand" id="ae-4997" style="display:none">
+                    <div class="article-body"><h2 style="font-size:18px;font-weight:800;margin:16px 0 8px">検証プロデュース 2026-04-02</h2><br><br><h3 style="font-size:15px;font-weight:700;margin:14px 0 6px;color:#374151">検証1: Seedance 2.0 Omni-Reference（昼投稿用）</h3><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">タイプ: A（新機能検証）</h4><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">生成計画</h4><br>1. <strong>画像</strong>: 既存キャラ参照を使用（`09_AIVideo-studio/Character/` から選択）→ $0<br>2. <strong>動画</strong>: Seedance 2.0（検証対象そのもの）→ 8秒 1本 ~$0.50<br>3. 合計: <strong>~$0.50</strong><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">MCP実行手順</h4><br>```<br>Step 1: ToolSearch → seedance v1.5 pro i2v の submit/status/result をロード<br>Step 2: submit — image_url=既存キャラ画像, prompt=下記, duration=8s<br>Step 3: status — 15秒間隔でポーリング<br>Step 4: result — 動画URL取得<br>```<br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">使用プロンプト</h4><br><br>#### 短縮版（投稿本文用）<br>「cinematic anime, character walks through rain-soaked neon alley, <br> rack focus from puddle reflection to character face, <br> detailed fabric movement, volumetric rain」<br><br>#### フル版（リプ欄/note用）<br>```<br>Theatrical quality Japanese anime, ultra-precise character drawing,<br>cinematic composition, 8k, $1B budget.<br><br>Character walks through rain-soaked neon alley at night.<br>Camera: rack focus from puddle reflection to character's face.<br>Clothing fabric moves naturally with each step.<br>Volumetric rain with neon light refraction.<br>Expression: calm determination, slight smile.<br>Omni-reference: maintain character consistency from reference image.<br>```<br>モデル: Seedance 2.0 (via MCP)<br>パラメータ: duration=8s, resolution=1080p<br><br>---<br><br><h3 style="font-size:15px;font-weight:700;margin:14px 0 6px;color:#374151">検証2: Kling 3.0 ラックフォーカス × マルチショット（夜投稿用）</h3><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">タイプ: C（テクニック検証 Before/After）</h4><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">生成計画</h4><br>1. <strong>画像</strong>: NB2 Edit で1枚生成 → $0.03<br>2. <strong>動画A</strong>: Kling 3.0 — ラックフォーカスなし（通常プロンプト）→ ~$0.35<br>3. <strong>動画B</strong>: Kling 3.0 — ラックフォーカスあり → ~$0.35<br>4. <strong>比較動画</strong>: FFmpegで左右結合 → $0<br>5. 合計: <strong>~$0.73</strong><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">MCP実行手順</h4><br>```<br>Step 1: ToolSearch → nano_banana_2_edit の submit/status/result をロード<br>Step 2: NB2 submit → 画像URL取得<br>Step 3: ToolSearch → kling_video_v3_pro i2v をロード<br>Step 4: Kling submit（通常版）→ 動画A URL<br>Step 5: Kling submit（ラックフォーカス版）→ 動画B URL<br>Step 6: FFmpegで比較動画を結合<br>```<br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">使用プロンプト</h4><br><br>#### 動画A（通常版 — Before）<br>```<br>Anime character standing in traditional Japanese garden.<br>Camera slowly pushes in toward character.<br>Cherry blossoms falling. Soft ambient light.<br>```<br><br>#### 動画B（ラックフォーカス版 — After）<br>```<br>Anime character standing in traditional Japanese garden.<br>Camera: rack focus from foreground cherry blossom branch <br>to character's face, slow 2-second transition.<br>Character turns slightly toward camera with gentle expression.<br>Cherry blossoms falling. Soft ambient light.<br>Multi-shot: <br>Shot 1 (0-3s): wide establishing, garden overview<br>Shot 2 (3-7s): rack focus close-up as described<br>Shot 3 (7-10s): over-the-shoulder, character looking at garden<br>```<br><br>#### 短縮版（投稿本文用）<br>「rack focus from foreground to character, slow transition,<br> multi-shot: wide → close-up → over-the-shoulder」<br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">FFmpegコマンド</h4><br>```bash<br>ffmpeg -i before.mp4 -i after.mp4 \<br>  -filter_complex &quot;[0:v]scale=540:-1,pad=540:960:0:(960-ih)/2[l];[1:v]scale=540:-1,pad=540:960:0:(960-ih)/2[r];[l][r]hstack,drawtext=text='Without rack focus':x=80:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2,drawtext=text='With rack focus':x=620:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2&quot; \<br>  -t 10 -c:v libx264 -crf 23 kling3_rack_focus_comparison.mp4<br>```<br><br>---<br><br><h3 style="font-size:15px;font-weight:700;margin:14px 0 6px;color:#374151">本日のコスト合計</h3><br><br>| 検証 | 画像 | 動画 | FFmpeg | 合計 |<br>|------|------|------|--------|------|<br>| Seedance 2.0 | $0 (既存) | $0.50 | - | $0.50 |<br>| Kling 3.0 比較 | $0.03 | $0.70 | $0 | $0.73 |<br>| <strong>合計</strong> | <strong>$0.03</strong> | <strong>$1.20</strong> | <strong>$0</strong> | <strong>$1.23 (¥185)</strong> |<br></div>
+                </div>
                 <div class="article-actions">
-                    <button class="btn-copy" onclick="cpArticle(this)" data-content="# 検証プロデュース 2026-04-02
+                    <button class="btn-expand" onclick="event.stopPropagation();toggleArticle(4997)">Read More</button>
+                    <button class="btn-copy" onclick="event.stopPropagation();cpText(this,'# 検証プロデュース 2026-04-02
 
 ## 検証1: Seedance 2.0 Omni-Reference（昼投稿用）
 
@@ -829,7 +906,7 @@ Theatrical quality Japanese anime, ultra-precise character drawing,
 cinematic composition, 8k, $1B budget.
 
 Character walks through rain-soaked neon alley at night.
-Camera: rack focus from puddle reflection to character's face.
+Camera: rack focus from puddle reflection to character&#39;s face.
 Clothing fabric moves naturally with each step.
 Volumetric rain with neon light refraction.
 Expression: calm determination, slight smile.
@@ -874,7 +951,7 @@ Cherry blossoms falling. Soft ambient light.
 ```
 Anime character standing in traditional Japanese garden.
 Camera: rack focus from foreground cherry blossom branch 
-to character's face, slow 2-second transition.
+to character&#39;s face, slow 2-second transition.
 Character turns slightly toward camera with gentle expression.
 Cherry blossoms falling. Soft ambient light.
 Multi-shot: 
@@ -890,7 +967,7 @@ Shot 3 (7-10s): over-the-shoulder, character looking at garden
 ### FFmpegコマンド
 ```bash
 ffmpeg -i before.mp4 -i after.mp4 \
-  -filter_complex &quot;[0:v]scale=540:-1,pad=540:960:0:(960-ih)/2[l];[1:v]scale=540:-1,pad=540:960:0:(960-ih)/2[r];[l][r]hstack,drawtext=text='Without rack focus':x=80:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2,drawtext=text='With rack focus':x=620:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2&quot; \
+  -filter_complex &quot;[0:v]scale=540:-1,pad=540:960:0:(960-ih)/2[l];[1:v]scale=540:-1,pad=540:960:0:(960-ih)/2[r];[l][r]hstack,drawtext=text=&#39;Without rack focus&#39;:x=80:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2,drawtext=text=&#39;With rack focus&#39;:x=620:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2&quot; \
   -t 10 -c:v libx264 -crf 23 kling3_rack_focus_comparison.mp4
 ```
 
@@ -898,12 +975,111 @@ ffmpeg -i before.mp4 -i after.mp4 \
 
 ## 本日のコスト合計
 
-| 検証 | 画像 | 動画 | FFmpeg | 合計 |
-|------|------|------|--------|------|
-| Seedance 2.0 | $0 (既存) | $0.50 | - | $0.50 |
-| Kling 3.0 比較 | $0.03 | $0.70 | $0 | $0.73 |
-| **合計** | **$0.03** | **$1.20** | **$0** | **$1.23 (¥185)** |
-">Copy Full Text</button>
+| 検証 | 画像 | 動画 | FFmpeg ')">Copy</button>
+                    <button class="btn-post" onclick="event.stopPropagation();cpAndOpenArticle(this,'# 検証プロデュース 2026-04-02
+
+## 検証1: Seedance 2.0 Omni-Reference（昼投稿用）
+
+### タイプ: A（新機能検証）
+
+### 生成計画
+1. **画像**: 既存キャラ参照を使用（`09_AIVideo-studio/Character/` から選択）→ $0
+2. **動画**: Seedance 2.0（検証対象そのもの）→ 8秒 1本 ~$0.50
+3. 合計: **~$0.50**
+
+### MCP実行手順
+```
+Step 1: ToolSearch → seedance v1.5 pro i2v の submit/status/result をロード
+Step 2: submit — image_url=既存キャラ画像, prompt=下記, duration=8s
+Step 3: status — 15秒間隔でポーリング
+Step 4: result — 動画URL取得
+```
+
+### 使用プロンプト
+
+#### 短縮版（投稿本文用）
+「cinematic anime, character walks through rain-soaked neon alley, 
+ rack focus from puddle reflection to character face, 
+ detailed fabric movement, volumetric rain」
+
+#### フル版（リプ欄/note用）
+```
+Theatrical quality Japanese anime, ultra-precise character drawing,
+cinematic composition, 8k, $1B budget.
+
+Character walks through rain-soaked neon alley at night.
+Camera: rack focus from puddle reflection to character&#39;s face.
+Clothing fabric moves naturally with each step.
+Volumetric rain with neon light refraction.
+Expression: calm determination, slight smile.
+Omni-reference: maintain character consistency from reference image.
+```
+モデル: Seedance 2.0 (via MCP)
+パラメータ: duration=8s, resolution=1080p
+
+---
+
+## 検証2: Kling 3.0 ラックフォーカス × マルチショット（夜投稿用）
+
+### タイプ: C（テクニック検証 Before/After）
+
+### 生成計画
+1. **画像**: NB2 Edit で1枚生成 → $0.03
+2. **動画A**: Kling 3.0 — ラックフォーカスなし（通常プロンプト）→ ~$0.35
+3. **動画B**: Kling 3.0 — ラックフォーカスあり → ~$0.35
+4. **比較動画**: FFmpegで左右結合 → $0
+5. 合計: **~$0.73**
+
+### MCP実行手順
+```
+Step 1: ToolSearch → nano_banana_2_edit の submit/status/result をロード
+Step 2: NB2 submit → 画像URL取得
+Step 3: ToolSearch → kling_video_v3_pro i2v をロード
+Step 4: Kling submit（通常版）→ 動画A URL
+Step 5: Kling submit（ラックフォーカス版）→ 動画B URL
+Step 6: FFmpegで比較動画を結合
+```
+
+### 使用プロンプト
+
+#### 動画A（通常版 — Before）
+```
+Anime character standing in traditional Japanese garden.
+Camera slowly pushes in toward character.
+Cherry blossoms falling. Soft ambient light.
+```
+
+#### 動画B（ラックフォーカス版 — After）
+```
+Anime character standing in traditional Japanese garden.
+Camera: rack focus from foreground cherry blossom branch 
+to character&#39;s face, slow 2-second transition.
+Character turns slightly toward camera with gentle expression.
+Cherry blossoms falling. Soft ambient light.
+Multi-shot: 
+Shot 1 (0-3s): wide establishing, garden overview
+Shot 2 (3-7s): rack focus close-up as described
+Shot 3 (7-10s): over-the-shoulder, character looking at garden
+```
+
+#### 短縮版（投稿本文用）
+「rack focus from foreground to character, slow transition,
+ multi-shot: wide → close-up → over-the-shoulder」
+
+### FFmpegコマンド
+```bash
+ffmpeg -i before.mp4 -i after.mp4 \
+  -filter_complex &quot;[0:v]scale=540:-1,pad=540:960:0:(960-ih)/2[l];[1:v]scale=540:-1,pad=540:960:0:(960-ih)/2[r];[l][r]hstack,drawtext=text=&#39;Without rack focus&#39;:x=80:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2,drawtext=text=&#39;With rack focus&#39;:x=620:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2&quot; \
+  -t 10 -c:v libx264 -crf 23 kling3_rack_focus_comparison.mp4
+```
+
+---
+
+## 本日のコスト合計
+
+| 検証 | 画像 | 動画 | FFmpeg ')">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post Article
+                    </button>
                 </div>
             </div></div>
 </div>
@@ -935,10 +1111,22 @@ function toast(m){const t=document.getElementById('toast');t.textContent=m;t.cla
 function toggleStatus(id){const btn=document.getElementById('st-'+id);const k='xst-'+id;
 const posted=localStorage.getItem(k)==='1';
 if(posted){localStorage.removeItem(k);btn.textContent='Pending';btn.classList.remove('posted')}
-else{localStorage.setItem(k,'1');btn.textContent='Posted \u2713';btn.classList.add('posted');toast('Marked as posted')}}
+else{localStorage.setItem(k,'1');btn.textContent='Posted \u2713';btn.classList.add('posted');toast('Marked as posted')}
+updateProgress()}
 /* Restore status on load */
 document.querySelectorAll('.status-btn').forEach(btn=>{const id=btn.id.replace('st-','');const k='xst-'+id;
 if(localStorage.getItem(k)==='1'){btn.textContent='Posted \u2713';btn.classList.add('posted')}});
+/* Update progress bar */
+function updateProgress(){
+    const total=document.querySelectorAll('.status-btn').length;
+    const posted=document.querySelectorAll('.status-btn.posted').length;
+    const pct=total?Math.round(posted/total*100):0;
+    const fill=document.getElementById('prog-fill');
+    const text=document.getElementById('prog-text');
+    if(fill)fill.style.width=pct+'%';
+    if(text)text.textContent=posted+'/'+total+' posted';
+}
+updateProgress();
 
 /* Copy & open X compose */
 function copyAndPost(id){const el=document.getElementById(id);const t=el.textContent;
@@ -959,6 +1147,24 @@ else{const a=document.createElement('textarea');a.value=t;a.style.cssText='posit
 document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);toast('Article copied!')}
 btn.textContent='Copied!';btn.classList.add('done');
 setTimeout(()=>{btn.textContent='Copy Full Text';btn.classList.remove('done')},1500)}
+/* Toggle article expand */
+function toggleArticle(id){const el=document.getElementById('ae-'+id);if(!el)return;
+const btn=el.closest('.article-card').querySelector('.btn-expand');
+if(el.style.display==='none'){el.style.display='block';if(btn)btn.textContent='Close'}
+else{el.style.display='none';if(btn)btn.textContent='Read More'}}
+/* Copy text helper */
+function cpText(btn,t){t=t.replace(/&#39;/g,"'").replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"');
+if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>toast('Copied!'))}
+else{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);toast('Copied!')}
+btn.textContent='Copied!';btn.classList.add('done');setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('done')},1500)}
+/* Copy & open X Articles */
+function cpAndOpenArticle(btn,t){t=t.replace(/&#39;/g,"'").replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"');
+if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>{toast('Copied! Opening X Articles...');setTimeout(()=>window.open('https://x.com/articles/new','_blank'),400)})}
+btn.innerHTML='&#x2705; Copied!'}
+/* Share via Web Share API */
+async function sharePost(id){const el=document.getElementById(id);const t=el.textContent;
+if(navigator.share){try{await navigator.share({text:t})}catch(e){}}
+else{cp(id)}}
 </script>
 </body>
 </html>
