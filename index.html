@@ -217,6 +217,29 @@ background:#fff;min-height:48px;transition:.15s}
 .article-actions{display:flex;gap:8px;padding:0 16px 16px}
 .article-actions .btn-copy{flex:1}.article-actions .btn-post{flex:2}
 
+/* Engage tab */
+.engage-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--R);margin-bottom:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.reply-card{border-left:4px solid #1d9bf0}
+.quote-card{border-left:4px solid #7c3aed}
+.engage-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.engage-type{font-size:10px;font-weight:700;padding:3px 10px;border-radius:8px;color:#fff}
+.reply-type{background:#1d9bf0}
+.quote-type{background:#7c3aed}
+.engage-handle{font-size:14px;font-weight:700;color:var(--tx)}
+.engage-theme{font-size:13px;color:var(--sub);margin-bottom:8px}
+.engage-link{margin-bottom:10px}
+.engage-pat{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-bottom:8px}
+.engage-pat-label{font-size:11px;font-weight:700;color:var(--sub);margin-bottom:6px;display:flex;justify-content:space-between}
+.engage-chars{color:var(--green)}
+.engage-text{font-size:14px;line-height:1.8;white-space:pre-wrap;font-family:inherit;border:none;background:none;padding:0;margin:0 0 8px;color:var(--tx)}
+.engage-actions{display:flex;gap:8px}
+.engage-actions .btn-copy{flex:1}.engage-actions .btn-post{flex:2}
+.target-list{background:var(--card);border:1px solid var(--bd);border-radius:var(--R);overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.target-item{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--bd)}
+.target-item:last-child{border-bottom:none}
+.target-handle{font-size:14px;font-weight:700;color:var(--ac)}
+.target-info{font-size:12px;color:var(--sub);text-align:right}
+
 /* Share button */
 .btn-share{display:flex;align-items:center;justify-content:center;width:48px;min-height:48px;color:var(--sub);background:#f8fafc;border:1px solid var(--bd);border-radius:12px;cursor:pointer}
 .btn-share:active{background:var(--ac);color:#fff}
@@ -251,40 +274,139 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
 <div id="app">
 <div class="w">
     <div class="hdr">
-        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-03 12:28</small></div>
+        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-04 01:05</small></div>
         <div class="hdr-stat">
-            <div class="stat-chip"><strong>4</strong> posts</div>
+            <div class="stat-chip"><strong>0</strong> posts</div>
             <div class="stat-chip"><strong>5</strong> media</div>
         </div>
     </div>
 
     <div id="p0" class="pn on">
         <div class="progress-bar-container">
-            <div class="progress-info"><span>Today's Posts</span><span id="prog-text">4 drafts</span></div>
+            <div class="progress-info"><span>Today's Posts</span><span id="prog-text">0 drafts</span></div>
             <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
         </div>
         <div class="sec-title">&#x23F0; Schedule</div>
         <div class="sched-scroll">
-            <div class="sched-card" onclick="document.getElementById('2026-04-03-P4-seedance-landscape.md').scrollIntoView({behavior:'smooth',block:'start'})" style="border-top:3px solid #7c3aed">
+            <div class="sched-card empty-slot">
                 <div class="sched-time" style="background:#fef3c7;color:#92400e">&#x1F305; 7:00</div>
-                <div class="sched-pillar">P4 考察</div>
-                <div class="sched-theme">Seedance 2.0公開の反応分析（自分は使えないけど勢力図整理）</div>
+                <div class="sched-theme" style="color:#94a3b8">Not planned</div>
             </div>
-            <div class="sched-card"  style="border-top:3px solid #e8384f">
+            <div class="sched-card empty-slot">
                 <div class="sched-time" style="background:#dbeafe;color:#1e40af">&#x2600;&#xFE0F; 12:00</div>
-                <div class="sched-pillar">P1 ブレイクスルー</div>
-                <div class="sched-theme">**映画技法5種をKling 3.0プロンプトで検証**</div>
+                <div class="sched-theme" style="color:#94a3b8">Not planned</div>
             </div>
-            <div class="sched-card" onclick="document.getElementById('2026-04-03-P2-nb2-kling-workflow.md').scrollIntoView({behavior:'smooth',block:'start'})" style="border-top:3px solid #2563eb">
+            <div class="sched-card empty-slot">
                 <div class="sched-time" style="background:#ede9fe;color:#5b21b6">&#x1F319; 21:00</div>
-                <div class="sched-pillar">P2 ワークフロー</div>
-                <div class="sched-theme">NB2 Edit→Kling 3.0の実践フロー全公開</div>
+                <div class="sched-theme" style="color:#94a3b8">Not planned</div>
             </div></div>
         <div class="sec-title">&#x270F;&#xFE0F; Drafts</div>
-        <div id="2026-04-03-P4-seedance-landscape.md">
-    <article class="card" style="border-left:4px solid #7c3aed" id="card-0">
+        <div class="empty">No posts yet</div>
+    </div>
+    <div id="p1" class="pn"><div class="sec-title">&#x1F3AC; Media</div><div class="gg"><div class="gc"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">DL</a></div></div></div></div>
+    <div id="p2" class="pn"><div class="sec-title">&#x1F4CA; Trend Intelligence</div><div class="empty">No trend report today</div></div>
+    <div id="p3" class="pn"><div class="sec-title">&#x1F4C1; Archive</div><div class="date-nav"><div class="date-chip" onclick="scrollToDate('2026-04-03')">2026-04-03</div><div class="date-chip" onclick="scrollToDate('2026-04-02')">2026-04-02</div></div><div class="dg" id="arch-2026-04-03"><div class="dl">2026-04-03</div>
+    <article class="card" style="" id="card-200">
         <div class="card-top">
-            <div class="card-meta"><span class="time-slot" style="background:#fef3c7;color:#92400e">&#x1F305; 7:00</span><span class="pill" style="background:#f5f3ff;color:#7c3aed">&#x1F4AC; Insight</span><button class="status-btn" id="st-card-0" onclick="event.stopPropagation();toggleStatus('card-0')">Pending</button></div>
+            <div class="card-meta"><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-200" onclick="event.stopPropagation();toggleStatus('card-200')">Pending</button></div>
+            
+            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
+        </div>
+        <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">&#x2B07; Image</a></div></div></div>
+        <div class="card-drafts">
+        <div class="pat open" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">本文（コピペ用）</span></div>
+                <div class="pat-right"><span class="cc-over">334/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
+            <div class="pat-b" style="display:block">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b200-0">Kling 3.0で映画のカメラワーク5種、プロンプトだけで再現できるか検証してみた🎬
+
+①Rack Focus — 前景→人物へのピント移動
+②Dolly Zoom — 背景が歪むヴァーティゴ効果
+③Whip Pan — 高速水平パンでシーン転換
+④Low Angle Tracking — 地面近くから見上げる追跡
+⑤Crane Shot — 地上→俯瞰への垂直移動
+
+同一画像から5パターン生成。
+プロンプトと結果はリプ欄に👇</pre>
+                </div>
+                
+                <div class="thread-reply">
+                    <div class="thread-line"></div>
+                    <div class="thread-content">
+                        <div class="thread-label">リプ欄1（プロンプト全文 — コピペ用）</div>
+                        <pre class="tweet-body reply-body" id="r200-0-0">使用プロンプト全文（全てKling V3 Pro / 8秒 / 16:9 / 音声ON）
+
+①Rack Focus:
+「rack focus from foreground cherry blossom to character face, slow 2-second transition, cinematic shallow depth of field」
+
+②Dolly Zoom:
+「dolly zoom (vertigo effect), camera moves backward while zooming in on face, background compression effect」
+
+③Whip Pan:
+「whip pan from left to right with motion blur, transitioning from neon signs to reveal character」</pre>
+                        <button class="btn-copy-sm" onclick="event.stopPropagation();cp('r200-0-0')">Copy</button>
+                    </div>
+                </div>
+                <div class="thread-reply">
+                    <div class="thread-line"></div>
+                    <div class="thread-content">
+                        <div class="thread-label">リプ欄2（プロンプト続き）</div>
+                        <pre class="tweet-body reply-body" id="r200-0-1">④Low Angle Tracking:
+「low angle tracking shot, camera near ground level looking up, puddle reflections, character walks forward」
+
+⑤Crane Shot:
+「crane shot starting at ground level near feet, slowly rises vertically above rooftops, epic scale reveal」
+
+元画像はNano Banana 2 Editで生成（$0.03）
+動画5本の合計コスト: $1.78（¥267）
+
+ポイント: カメラワークの名前を英語でそのまま書くのが一番効く✨</pre>
+                        <button class="btn-copy-sm" onclick="event.stopPropagation();cp('r200-0-1')">Copy</button>
+                    </div>
+                </div>
+                <div class="thread-reply">
+                    <div class="thread-line"></div>
+                    <div class="thread-content">
+                        <div class="thread-label">リプ欄3（検証結果の感想）</div>
+                        <pre class="tweet-body reply-body" id="r200-0-2">検証結果の印象:
+
+Crane Shot → 垂直移動の再現度が一番高い。スケール感も出る
+Low Angle → 地面からの見上げ構図、かなり自然
+Rack Focus → ピント移動は効くが速度の細かい制御はまだ粗い
+Whip Pan → 動きは出るがモーションブラーの表現は発展途上
+Dolly Zoom → 背景圧縮の再現が最も難しい（挑戦的なプロンプトほど面白い結果に）
+
+映画のカメラワーク用語をそのまま英語で入れると、
+Klingが「あ、これね」って理解してくれる感覚がある。</pre>
+                        <button class="btn-copy-sm" onclick="event.stopPropagation();cp('r200-0-2')">Copy</button>
+                    </div>
+                </div>
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b200-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b200-0')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b200-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div></div>
+    </article>
+    <article class="card" style="border-left:4px solid #7c3aed" id="card-201">
+        <div class="card-top">
+            <div class="card-meta"><span class="pill" style="background:#f5f3ff;color:#7c3aed">&#x1F4AC; Insight</span><button class="status-btn" id="st-card-201" onclick="event.stopPropagation();toggleStatus('card-201')">Pending</button></div>
             <p class="summary">Seedance 2.0公開 — 動画生成AI勢力図の変化</p>
             <div class="x-row"></div>
         </div>
@@ -302,7 +424,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b0-0">Seedance 2.0が正式に降りてきた。
+                    <pre class="tweet-body" id="b201-0">Seedance 2.0が正式に降りてきた。
 1.6M viewsでタイムラインがざわついてる。
 
 で、ここ1-2週間で感じるのは
@@ -319,13 +441,13 @@ Seedance → モーション品質（未検証）
                 
                 
             <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b0-0')">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b201-0')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b0-0')">
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b201-0')">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b0-0')">
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b201-0')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
@@ -343,7 +465,7 @@ Seedance → モーション品質（未検証）
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b0-1">Seedance 2.0の話題でTLが埋まってるけど、
+                    <pre class="tweet-body" id="b201-1">Seedance 2.0の話題でTLが埋まってるけど、
 自分はまだ触れてないので正直に書くと、
 
 いま一番手に馴染んでるのはKling 3.0。
@@ -356,13 +478,13 @@ Crane ShotとLow Angleの再現度がかなり良かった。
                 
                 
             <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b0-1')">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b201-1')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b0-1')">
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b201-1')">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b0-1')">
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b201-1')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
@@ -380,7 +502,7 @@ Crane ShotとLow Angleの再現度がかなり良かった。
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b0-2">動画生成AI、2026年だけでもう何モデル出てるんだろう😳
+                    <pre class="tweet-body" id="b201-2">動画生成AI、2026年だけでもう何モデル出てるんだろう😳
 
 Seedance 2.0が公開されて、選択肢がまた増えた。
 Kling / Vidu / Hailuo / Sora / Seedance / Wan...
@@ -393,24 +515,24 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                 
                 
             <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b0-2')">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b201-2')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b0-2')">
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b201-2')">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b0-2')">
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b201-2')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
         </div></div>
-    </article></div><div id="2026-04-03-P3-cinema-techniques.md">
-    <article class="card" style="border-left:4px solid #d97706" id="card-1">
+    </article>
+    <article class="card" style="border-left:4px solid #d97706" id="card-202">
         <div class="card-top">
-            <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-1" onclick="event.stopPropagation();toggleStatus('card-1')">Pending</button></div>
+            <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-202" onclick="event.stopPropagation();toggleStatus('card-202')">Pending</button></div>
             <p class="summary">## コンセプト</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -426,7 +548,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b1-0">Kling 3.0で映画のカメラワーク5種、プロンプトだけで再現できるか検証してみた🎬
+                    <pre class="tweet-body" id="b202-0">Kling 3.0で映画のカメラワーク5種、プロンプトだけで再現できるか検証してみた🎬
 
 ①Rack Focus — 前景→人物へのピント移動
 ②Dolly Zoom — 背景が歪むヴァーティゴ効果
@@ -440,13 +562,13 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                 
                 
             <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b1-0')">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b202-0')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-0')">
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b202-0')">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1-0')">
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b202-0')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
@@ -464,7 +586,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b1-1">①Rack Focus:
+                    <pre class="tweet-body" id="b202-1">①Rack Focus:
 「rack focus from foreground cherry blossom to character face, slow 2-second transition, cinematic shallow depth of field」
 
 ②Dolly Zoom:
@@ -485,13 +607,13 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                 
                 
             <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b1-1')">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b202-1')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-1')">
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b202-1')">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1-1')">
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b202-1')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
@@ -509,7 +631,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b1-2">Kling 3.0、映画のカメラワークがプロンプトで指定できる時代になってた😳
+                    <pre class="tweet-body" id="b202-2">Kling 3.0、映画のカメラワークがプロンプトで指定できる時代になってた😳
 
 5種類の映画技法を同じ画像から検証:
 🥇 Crane Shot — 垂直移動の再現度が一番高い
@@ -525,13 +647,13 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                 
                 
             <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b1-2')">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b202-2')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-2')">
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b202-2')">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1-2')">
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b202-2')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
@@ -549,7 +671,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b1-3">海外のKlingクリエイターが映画的カメラワークをプロンプトで指定してて、
+                    <pre class="tweet-body" id="b202-3">海外のKlingクリエイターが映画的カメラワークをプロンプトで指定してて、
 気になったので自分でも5種類試してみた。
 
 Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
@@ -563,22 +685,22 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
                 
                 
             <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b1-3')">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b202-3')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-3')">
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b202-3')">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1-3')">
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b202-3')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
         </div></div>
-    </article></div><div id="2026-04-03-P2-nb2-kling-workflow.md">
-    <article class="card" style="border-left:4px solid #2563eb" id="card-2">
+    </article>
+    <article class="card" style="border-left:4px solid #2563eb" id="card-203">
         <div class="card-top">
-            <div class="card-meta"><span class="time-slot" style="background:#ede9fe;color:#5b21b6">&#x1F319; 21:00</span><span class="pill" style="background:#eff6ff;color:#2563eb">&#x2699;&#xFE0F; Workflow</span><button class="status-btn" id="st-card-2" onclick="event.stopPropagation();toggleStatus('card-2')">Pending</button></div>
+            <div class="card-meta"><span class="pill" style="background:#eff6ff;color:#2563eb">&#x2699;&#xFE0F; Workflow</span><button class="status-btn" id="st-card-203" onclick="event.stopPropagation();toggleStatus('card-203')">Pending</button></div>
             <p class="summary">画像→動画の実践ワークフロー全公開</p>
             <div class="x-row"><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
         </div>
@@ -596,7 +718,7 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b2-0">AI動画、「画像から動画」が一番安定する。
+                    <pre class="tweet-body" id="b203-0">AI動画、「画像から動画」が一番安定する。
 自分が毎回使ってるフローを全部書いてみる🎬
 
 ① Nano Banana 2 Editでシーン画像生成（$0.03/枚）
@@ -610,13 +732,13 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
                 
                 
             <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b2-0')">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b203-0')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b2-0')">
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b203-0')">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b2-0')">
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b203-0')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
@@ -634,7 +756,7 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b2-1">テキストから直接動画を生成するT2Vと、
+                    <pre class="tweet-body" id="b203-1">テキストから直接動画を生成するT2Vと、
 画像を挟むI2Vのどっちがいいか問題、
 自分の中では完全にI2V派になった。
 
@@ -650,13 +772,13 @@ NB2 Edit → Kling V3 Proの組み合わせ、
                 
                 
             <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b2-1')">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b203-1')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b2-1')">
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b203-1')">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b2-1')">
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b203-1')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
@@ -674,7 +796,7 @@ NB2 Edit → Kling V3 Proの組み合わせ、
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b2-2">海外の元Disneyクリエイターが
+                    <pre class="tweet-body" id="b203-2">海外の元Disneyクリエイターが
 NB→Kling動画のワークフローを公開してて、
 「あ、自分もほぼ同じことやってる」と気づいた。
 
@@ -689,176 +811,49 @@ NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
                 
                 
             <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b2-2')">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b203-2')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
                 </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b2-2')">
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b203-2')">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b2-2')">
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b203-2')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
             </div>
         </div></div>
-    </article></div><div id="2026-04-03-cinema-techniques-final.md">
-    <article class="card" style="" id="card-3">
+    </article></div><div class="dg" id="arch-2026-04-02"><div class="dl">2026-04-02</div>
+    <article class="card" style="" id="card-204">
         <div class="card-top">
-            <div class="card-meta"><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-3" onclick="event.stopPropagation();toggleStatus('card-3')">Pending</button></div>
-            
-            <div class="x-row"><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a></div>
-        </div>
-        <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">&#x2B07; Image</a></div></div></div>
-        <div class="card-drafts">
-        <div class="pat open" onclick="toggle(this)">
-            <div class="pat-h">
-                <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">本文（コピペ用）</span></div>
-                <div class="pat-right"><span class="cc-over">334/280</span><span class="pat-arrow">&#x25BC;</span></div>
-            </div>
-            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
-            <div class="pat-b" style="display:block">
-                <div class="tweet-sim">
-                    <div class="tweet-head">
-                        <div class="tweet-avatar">R</div>
-                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
-                    </div>
-                    <pre class="tweet-body" id="b3-0">Kling 3.0で映画のカメラワーク5種、プロンプトだけで再現できるか検証してみた🎬
-
-①Rack Focus — 前景→人物へのピント移動
-②Dolly Zoom — 背景が歪むヴァーティゴ効果
-③Whip Pan — 高速水平パンでシーン転換
-④Low Angle Tracking — 地面近くから見上げる追跡
-⑤Crane Shot — 地上→俯瞰への垂直移動
-
-同一画像から5パターン生成。
-プロンプトと結果はリプ欄に👇</pre>
-                </div>
-                
-                <div class="thread-reply">
-                    <div class="thread-line"></div>
-                    <div class="thread-content">
-                        <div class="thread-label">リプ欄1（プロンプト全文 — コピペ用）</div>
-                        <pre class="tweet-body reply-body" id="r3-0-0">使用プロンプト全文（全てKling V3 Pro / 8秒 / 16:9 / 音声ON）
-
-①Rack Focus:
-「rack focus from foreground cherry blossom to character face, slow 2-second transition, cinematic shallow depth of field」
-
-②Dolly Zoom:
-「dolly zoom (vertigo effect), camera moves backward while zooming in on face, background compression effect」
-
-③Whip Pan:
-「whip pan from left to right with motion blur, transitioning from neon signs to reveal character」</pre>
-                        <button class="btn-copy-sm" onclick="event.stopPropagation();cp('r3-0-0')">Copy</button>
-                    </div>
-                </div>
-                <div class="thread-reply">
-                    <div class="thread-line"></div>
-                    <div class="thread-content">
-                        <div class="thread-label">リプ欄2（プロンプト続き）</div>
-                        <pre class="tweet-body reply-body" id="r3-0-1">④Low Angle Tracking:
-「low angle tracking shot, camera near ground level looking up, puddle reflections, character walks forward」
-
-⑤Crane Shot:
-「crane shot starting at ground level near feet, slowly rises vertically above rooftops, epic scale reveal」
-
-元画像はNano Banana 2 Editで生成（$0.03）
-動画5本の合計コスト: $1.78（¥267）
-
-ポイント: カメラワークの名前を英語でそのまま書くのが一番効く✨</pre>
-                        <button class="btn-copy-sm" onclick="event.stopPropagation();cp('r3-0-1')">Copy</button>
-                    </div>
-                </div>
-                <div class="thread-reply">
-                    <div class="thread-line"></div>
-                    <div class="thread-content">
-                        <div class="thread-label">リプ欄3（検証結果の感想）</div>
-                        <pre class="tweet-body reply-body" id="r3-0-2">検証結果の印象:
-
-Crane Shot → 垂直移動の再現度が一番高い。スケール感も出る
-Low Angle → 地面からの見上げ構図、かなり自然
-Rack Focus → ピント移動は効くが速度の細かい制御はまだ粗い
-Whip Pan → 動きは出るがモーションブラーの表現は発展途上
-Dolly Zoom → 背景圧縮の再現が最も難しい（挑戦的なプロンプトほど面白い結果に）
-
-映画のカメラワーク用語をそのまま英語で入れると、
-Klingが「あ、これね」って理解してくれる感覚がある。</pre>
-                        <button class="btn-copy-sm" onclick="event.stopPropagation();cp('r3-0-2')">Copy</button>
-                    </div>
-                </div>
-                
-            <div class="action-row">
-                <button class="btn-copy" onclick="event.stopPropagation();cp('b3-0')">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
-                </button>
-                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b3-0')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
-                </button>
-                <button class="btn-share" onclick="event.stopPropagation();sharePost('b3-0')">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
-                </button>
-            </div>
-            </div>
-        </div></div>
-    </article></div>
-    </div>
-    <div id="p1" class="pn"><div class="sec-title">&#x1F3AC; Media</div><div class="gg"><div class="gc"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">DL</a></div></div></div></div>
-    <div id="p2" class="pn"><div class="sec-title">&#x1F4CA; Trend Intelligence</div><div class="mood-card"><div class="mood-label">&#x1F30A; Today's Mood</div><div class="mood-text">Seedance 2.0がHiggsfield/OpenArtで正式公開（1.6M views, 1779 likes）→ 超バズ中 ただしRyoは使えない → **Seedance以外のテクニック検証で差別化** Kling 3.0のアクション/物理一貫性が継続して高評価 海外で「NB画像→Kling動画」のハイブリッドワークフローが定番化 元Disney/PrimeVideoクリエイターがKling検証を出し始めた（プロ参入の兆候）</div></div>
-        <div class="trend-item rank-s">
-            <div class="trend-head"><span class="rank-badge rank-s-bg">S</span><span class="trend-title">1. Kling 3.0 × BigMotion_ai：アクション物理一貫性</span></div>
-            <div class="trend-body"><div class="trend-detail">なぜS級: 「物理一貫性」がバズワード。日本語圏で未検証。RyoはKling CPP</div><div class="trend-detail">Ryoの切り口: <strong>戦闘/アクションシーンのプロンプトで、物理破綻を減らすテクニック</strong>を検証</div><div class="trend-detail">検証方法: 同一シーンで「物理指示あり/なし」のBefore/After</div><div class="trend-detail">ピラー: P1(ブレイクスルー) + P2(ワークフロー)</div></div>
-            <div class="trend-links"><a class="x-chip sm" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a></div>
-        </div>
-        <div class="trend-item rank-s">
-            <div class="trend-head"><span class="rank-badge rank-s-bg">S</span><span class="trend-title">2. NB2 Edit → Kling 3.0 ハイブリッドワークフロー</span></div>
-            <div class="trend-body"><div class="trend-detail">なぜS級: 海外プロが使い始めたワークフロー。Ryoの既存パイプラインと一致</div><div class="trend-detail">Ryoの切り口: <strong>NB2 Editでシーン画像→Kling I2Vの実践フロー全公開</strong>。コスト$0.38/本</div><div class="trend-detail">検証方法: 1シーン生成の全プロセスを動画で見せる</div><div class="trend-detail">ピラー: P2(ワークフロー) — ブックマーク狙い</div></div>
-            <div class="trend-links"><a class="x-chip sm" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
-        </div>
-        <div class="trend-item rank-s">
-            <div class="trend-head"><span class="rank-badge rank-s-bg">S</span><span class="trend-title">3. 低アングル/特殊カメラワークのプロンプト制御</span></div>
-            <div class="trend-body"><div class="trend-detail">なぜS級: 映画的カメラワークをプロンプトだけで指定する系。さっきのラックフォーカスの延長</div><div class="trend-detail">Ryoの切り口: <strong>ドリーズーム/ウィップパン/低アングル追跡など、映画技法5種をKling 3.0で検証</strong></div><div class="trend-detail">検証方法: 同一シーン × 5種のカメラワークプロンプト</div><div class="trend-detail">ピラー: P3(比較) — 保存価値が最高に高い</div></div>
-            <div class="trend-links"><a class="x-chip sm" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
-        </div>
-        <div class="trend-item rank-a">
-            <div class="trend-head"><span class="rank-badge rank-a-bg">A</span><span class="trend-title">4. Runway vs Kling — 安定性 vs 速度</span></div>
-            <div class="trend-body"><div class="trend-detail">切り口: 同一プロンプトで「品質」「速度」「コスト」の3軸比較</div></div>
-            <div class="trend-links"><a class="x-chip sm" href="https://x.com/0xMeta_crypto/status/2039497696617037892" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@0xMeta_crypto</a></div>
-        </div>
-        <div class="trend-item rank-a">
-            <div class="trend-head"><span class="rank-badge rank-a-bg">A</span><span class="trend-title">5. オリジナルIP開発のAIパイプライン</span></div>
-            <div class="trend-body"><div class="trend-detail">切り口: NB2キーフレーム→Kling動画→ElevenLabs音声で短編制作</div></div>
-            <div class="trend-links"><a class="x-chip sm" href="https://x.com/MarkLalonde68/status/2039798743835222442" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@MarkLalonde68</a></div>
-        </div></div>
-    <div id="p3" class="pn"><div class="sec-title">&#x1F4C1; Archive</div><div class="date-nav"><div class="date-chip" onclick="scrollToDate('2026-04-02')">2026-04-02</div></div><div class="dg" id="arch-2026-04-02"><div class="dl">2026-04-02</div>
-    <article class="card" style="" id="card-200">
-        <div class="card-top">
-            <div class="card-meta"><button class="status-btn" id="st-card-200" onclick="event.stopPropagation();toggleStatus('card-200')">Pending</button></div>
+            <div class="card-meta"><button class="status-btn" id="st-card-204" onclick="event.stopPropagation();toggleStatus('card-204')">Pending</button></div>
             
             <div class="x-row"></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts"></div>
     </article>
-    <article class="card" style="border-left:4px solid #7c3aed" id="card-201">
+    <article class="card" style="border-left:4px solid #7c3aed" id="card-205">
         <div class="card-top">
-            <div class="card-meta"><span class="pill" style="background:#f5f3ff;color:#7c3aed">&#x1F4AC; Insight</span><button class="status-btn" id="st-card-201" onclick="event.stopPropagation();toggleStatus('card-201')">Pending</button></div>
+            <div class="card-meta"><span class="pill" style="background:#f5f3ff;color:#7c3aed">&#x1F4AC; Insight</span><button class="status-btn" id="st-card-205" onclick="event.stopPropagation();toggleStatus('card-205')">Pending</button></div>
             <p class="summary">Sora終了後の勢力図</p>
             <div class="x-row"></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts"></div>
     </article>
-    <article class="card" style="border-left:4px solid #2563eb" id="card-202">
+    <article class="card" style="border-left:4px solid #2563eb" id="card-206">
         <div class="card-top">
-            <div class="card-meta"><span class="pill" style="background:#eff6ff;color:#2563eb">&#x2699;&#xFE0F; Workflow</span><button class="status-btn" id="st-card-202" onclick="event.stopPropagation();toggleStatus('card-202')">Pending</button></div>
+            <div class="card-meta"><span class="pill" style="background:#eff6ff;color:#2563eb">&#x2699;&#xFE0F; Workflow</span><button class="status-btn" id="st-card-206" onclick="event.stopPropagation();toggleStatus('card-206')">Pending</button></div>
             <p class="summary">Kling 3.0のラックフォーカス × マルチショットで短編制作</p>
             <div class="x-row"></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts"></div>
     </article>
-    <article class="card" style="border-left:4px solid #e8384f" id="card-203">
+    <article class="card" style="border-left:4px solid #e8384f" id="card-207">
         <div class="card-top">
-            <div class="card-meta"><span class="pill" style="background:#fef2f2;color:#e8384f">&#x1F525; Breakthrough</span><button class="status-btn" id="st-card-203" onclick="event.stopPropagation();toggleStatus('card-203')">Pending</button></div>
+            <div class="card-meta"><span class="pill" style="background:#fef2f2;color:#e8384f">&#x1F525; Breakthrough</span><button class="status-btn" id="st-card-207" onclick="event.stopPropagation();toggleStatus('card-207')">Pending</button></div>
             <p class="summary">Seedance 2.0 Omni-Reference実検証</p>
             <div class="x-row"></div>
         </div>
@@ -869,11 +864,11 @@ Klingが「あ、これね」って理解してくれる感覚がある。</pre>
             <div class="article-card">
                 <div class="article-head"><span class="article-badge">verification</span><h3 class="article-title">検証プロデュース 2026-04-02</h3></div>
                 <p class="article-preview">1. **画像**: 既存キャラ参照を使用（`09_AIVideo-studio/Character/` から選択）→ $0 2. **動画**: Seedance 2.0（検証対象そのもの）→ 8秒 1本 ~$0.50 3. 合計: **~$0.50** ``` Step 1: ToolSearch → seedance v1.5 pro i2v の submit/status/result を...</p>
-                <div class="article-expand" id="ae-7785" style="display:none">
+                <div class="article-expand" id="ae-4713" style="display:none">
                     <div class="article-body"><h2 style="font-size:18px;font-weight:800;margin:16px 0 8px">検証プロデュース 2026-04-02</h2><br><br><h3 style="font-size:15px;font-weight:700;margin:14px 0 6px;color:#374151">検証1: Seedance 2.0 Omni-Reference（昼投稿用）</h3><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">タイプ: A（新機能検証）</h4><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">生成計画</h4><br>1. <strong>画像</strong>: 既存キャラ参照を使用（`09_AIVideo-studio/Character/` から選択）→ $0<br>2. <strong>動画</strong>: Seedance 2.0（検証対象そのもの）→ 8秒 1本 ~$0.50<br>3. 合計: <strong>~$0.50</strong><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">MCP実行手順</h4><br>```<br>Step 1: ToolSearch → seedance v1.5 pro i2v の submit/status/result をロード<br>Step 2: submit — image_url=既存キャラ画像, prompt=下記, duration=8s<br>Step 3: status — 15秒間隔でポーリング<br>Step 4: result — 動画URL取得<br>```<br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">使用プロンプト</h4><br><br>#### 短縮版（投稿本文用）<br>「cinematic anime, character walks through rain-soaked neon alley, <br> rack focus from puddle reflection to character face, <br> detailed fabric movement, volumetric rain」<br><br>#### フル版（リプ欄/note用）<br>```<br>Theatrical quality Japanese anime, ultra-precise character drawing,<br>cinematic composition, 8k, $1B budget.<br><br>Character walks through rain-soaked neon alley at night.<br>Camera: rack focus from puddle reflection to character's face.<br>Clothing fabric moves naturally with each step.<br>Volumetric rain with neon light refraction.<br>Expression: calm determination, slight smile.<br>Omni-reference: maintain character consistency from reference image.<br>```<br>モデル: Seedance 2.0 (via MCP)<br>パラメータ: duration=8s, resolution=1080p<br><br>---<br><br><h3 style="font-size:15px;font-weight:700;margin:14px 0 6px;color:#374151">検証2: Kling 3.0 ラックフォーカス × マルチショット（夜投稿用）</h3><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">タイプ: C（テクニック検証 Before/After）</h4><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">生成計画</h4><br>1. <strong>画像</strong>: NB2 Edit で1枚生成 → $0.03<br>2. <strong>動画A</strong>: Kling 3.0 — ラックフォーカスなし（通常プロンプト）→ ~$0.35<br>3. <strong>動画B</strong>: Kling 3.0 — ラックフォーカスあり → ~$0.35<br>4. <strong>比較動画</strong>: FFmpegで左右結合 → $0<br>5. 合計: <strong>~$0.73</strong><br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">MCP実行手順</h4><br>```<br>Step 1: ToolSearch → nano_banana_2_edit の submit/status/result をロード<br>Step 2: NB2 submit → 画像URL取得<br>Step 3: ToolSearch → kling_video_v3_pro i2v をロード<br>Step 4: Kling submit（通常版）→ 動画A URL<br>Step 5: Kling submit（ラックフォーカス版）→ 動画B URL<br>Step 6: FFmpegで比較動画を結合<br>```<br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">使用プロンプト</h4><br><br>#### 動画A（通常版 — Before）<br>```<br>Anime character standing in traditional Japanese garden.<br>Camera slowly pushes in toward character.<br>Cherry blossoms falling. Soft ambient light.<br>```<br><br>#### 動画B（ラックフォーカス版 — After）<br>```<br>Anime character standing in traditional Japanese garden.<br>Camera: rack focus from foreground cherry blossom branch <br>to character's face, slow 2-second transition.<br>Character turns slightly toward camera with gentle expression.<br>Cherry blossoms falling. Soft ambient light.<br>Multi-shot: <br>Shot 1 (0-3s): wide establishing, garden overview<br>Shot 2 (3-7s): rack focus close-up as described<br>Shot 3 (7-10s): over-the-shoulder, character looking at garden<br>```<br><br>#### 短縮版（投稿本文用）<br>「rack focus from foreground to character, slow transition,<br> multi-shot: wide → close-up → over-the-shoulder」<br><br><h4 style="font-size:14px;font-weight:600;margin:10px 0 4px;color:#4b5563">FFmpegコマンド</h4><br>```bash<br>ffmpeg -i before.mp4 -i after.mp4 \<br>  -filter_complex &quot;[0:v]scale=540:-1,pad=540:960:0:(960-ih)/2[l];[1:v]scale=540:-1,pad=540:960:0:(960-ih)/2[r];[l][r]hstack,drawtext=text='Without rack focus':x=80:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2,drawtext=text='With rack focus':x=620:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2&quot; \<br>  -t 10 -c:v libx264 -crf 23 kling3_rack_focus_comparison.mp4<br>```<br><br>---<br><br><h3 style="font-size:15px;font-weight:700;margin:14px 0 6px;color:#374151">本日のコスト合計</h3><br><br>| 検証 | 画像 | 動画 | FFmpeg | 合計 |<br>|------|------|------|--------|------|<br>| Seedance 2.0 | $0 (既存) | $0.50 | - | $0.50 |<br>| Kling 3.0 比較 | $0.03 | $0.70 | $0 | $0.73 |<br>| <strong>合計</strong> | <strong>$0.03</strong> | <strong>$1.20</strong> | <strong>$0</strong> | <strong>$1.23 (¥185)</strong> |<br></div>
                 </div>
                 <div class="article-actions">
-                    <button class="btn-expand" onclick="event.stopPropagation();toggleArticle(7785)">Read More</button>
+                    <button class="btn-expand" onclick="event.stopPropagation();toggleArticle(4713)">Read More</button>
                     <button class="btn-copy" onclick="event.stopPropagation();cpText(this,'# 検証プロデュース 2026-04-02
 
 ## 検証1: Seedance 2.0 Omni-Reference（昼投稿用）
@@ -1082,6 +1077,7 @@ ffmpeg -i before.mp4 -i after.mp4 \
                     </button>
                 </div>
             </div></div>
+    <div id="p5" class="pn"><div class="empty">No engagement items today. Run morning routine first.</div></div>
 </div>
 <!-- Bottom Tab Bar -->
 <nav class="btm">
@@ -1090,6 +1086,7 @@ ffmpeg -i before.mp4 -i after.mp4 \
     <div class="bt" onclick="sw('p2',this)"><span class="bi">&#x1F525;</span><span class="bl">Trend</span></div>
     <div class="bt" onclick="sw('p3',this)"><span class="bi">&#x1F4C1;</span><span class="bl">Archive</span></div>
     <div class="bt" onclick="sw('p4',this)"><span class="bi">&#x1F4DD;</span><span class="bl">Article</span></div>
+    <div class="bt" onclick="sw('p5',this)"><span class="bi">&#x1F4AC;</span><span class="bl">Engage</span></div>
 </nav>
 </div>
 <div class="toast" id="toast"></div>
