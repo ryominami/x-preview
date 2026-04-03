@@ -6,13 +6,15 @@
 <meta name="theme-color" content="#f8fafc">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="data:application/json,%7B%22name%22%3A%20%22X%20Preview%22%2C%20%22short_name%22%3A%20%22X%20Preview%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22background_color%22%3A%20%22%23f0f2f5%22%2C%20%22theme_color%22%3A%20%22%232563eb%22%7D">
 <title>X Preview</title>
 <style>
-:root{--bg:#f0f2f5;--card:#fff;--bd:#e5e7eb;--tx:#1a1a2e;--sub:#8892a4;--ac:#2563eb;--green:#16a34a;--red:#dc2626;--amber:#d97706;--R:16px}
+:root{--bg:#f0f2f5;--card:#fff;--bd:#e5e7eb;--tx:#1a1a2e;--sub:#8892a4;--ac:#2563eb;--green:#16a34a;--red:#dc2626;--amber:#d97706;--R:16px;--safe-b:env(safe-area-inset-bottom,0px)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',system-ui,sans-serif;
-background:var(--bg);color:var(--tx);line-height:1.65;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
-.w{max-width:560px;margin:0 auto;padding:0 12px 90px}
+background:var(--bg);color:var(--tx);line-height:1.65;-webkit-font-smoothing:antialiased;
+-webkit-tap-highlight-color:transparent;overscroll-behavior-y:contain}
+.w{max-width:560px;margin:0 auto;padding:0 14px calc(80px + var(--safe-b))}
 
 /* Lock */
 #lock{position:fixed;inset:0;background:linear-gradient(160deg,#667eea,#764ba2);z-index:200;
@@ -39,25 +41,33 @@ font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,.
 .stat-chip{font-size:11px;font-weight:600;padding:4px 10px;border-radius:10px;background:var(--card);border:1px solid var(--bd);color:var(--sub)}
 .stat-chip strong{color:var(--tx)}
 
-/* Tabs */
-.tabs{position:sticky;top:0;z-index:10;background:var(--bg);display:flex;gap:4px;padding:10px 0;margin-bottom:6px}
-.tab{flex:1;text-align:center;padding:10px 0;border-radius:12px;background:var(--card);border:1px solid var(--bd);
-color:var(--sub);font-size:11px;font-weight:600;cursor:pointer;transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
-.tab.on{background:var(--ac);border-color:var(--ac);color:#fff;box-shadow:0 2px 8px rgba(37,99,235,.3)}
-.tab .n{display:block;font-size:18px;font-weight:800;line-height:1.2}
-.pn{display:none}.pn.on{display:block}
+/* Bottom Tab Bar */
+.btm{position:fixed;bottom:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.92);
+backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+border-top:1px solid var(--bd);padding:6px 8px calc(6px + var(--safe-b));
+display:flex;gap:2px;box-shadow:0 -2px 10px rgba(0,0,0,.06)}
+.bt{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;
+border-radius:12px;color:var(--sub);font-size:10px;font-weight:600;cursor:pointer;
+transition:.15s;-webkit-user-select:none;border:none;background:none}
+.bt.on{color:var(--ac)}
+.bt .bi{font-size:20px;line-height:1}
+.bt .bl{font-size:10px}
+.pn{display:none}.pn.on{display:block;animation:fadeUp .25s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* Schedule Timeline */
-.schedule-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--R);padding:6px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.sched-slot{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;margin-bottom:4px;transition:.15s}
-.sched-slot:last-child{margin-bottom:0}
-.sched-slot:active{background:#f8fafc}
-.empty-slot{opacity:.5}
-.sched-time{font-size:12px;font-weight:700;padding:5px 12px;border-radius:10px;white-space:nowrap;min-width:80px;text-align:center}
-.sched-info{flex:1;min-width:0}
-.sched-pillar{font-size:11px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.5px}
-.sched-theme{font-size:13px;font-weight:600;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sched-arrow{color:#cbd5e1;font-size:16px}
+/* Horizontal Schedule */
+.sched-scroll{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+padding:4px 2px 12px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.sched-scroll::-webkit-scrollbar{display:none}
+.sched-card{flex:0 0 calc(33.33% - 7px);min-width:140px;background:var(--card);border:1px solid var(--bd);
+border-radius:14px;padding:14px 12px;scroll-snap-align:start;transition:.15s;
+box-shadow:0 1px 4px rgba(0,0,0,.06);cursor:pointer}
+.sched-card:active{transform:scale(.97);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.empty-slot{opacity:.4}
+.sched-time{font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;display:inline-block;margin-bottom:8px}
+.sched-pillar{font-size:10px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.sched-theme{font-size:13px;font-weight:600;color:var(--tx);line-height:1.4;
+display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 /* Date group */
 .dg{margin-bottom:20px}
@@ -73,12 +83,12 @@ color:var(--sub);font-size:11px;font-weight:600;cursor:pointer;transition:.15s;b
 .time-slot{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
 .summary{font-size:15px;color:#374151;font-weight:600;margin:2px 0 10px;line-height:1.5}
 
-/* X Chips */
-.x-row{display:flex;gap:8px;flex-wrap:wrap}
-.x-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#1d9bf0;
-background:#f0f9ff;border:1px solid #bfdbfe;padding:7px 16px;border-radius:24px;text-decoration:none;min-height:36px}
-.x-chip:active{background:#1d9bf0;color:#fff;border-color:#1d9bf0}
-.x-chip.sm{font-size:11px;padding:5px 12px;min-height:28px}
+/* X Chips — large tap target */
+.x-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.x-chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#1d9bf0;
+background:#f0f9ff;border:1px solid #bfdbfe;padding:10px 18px;border-radius:24px;text-decoration:none;min-height:44px}
+.x-chip:active{background:#1d9bf0;color:#fff;border-color:#1d9bf0;transform:scale(.96)}
+.x-chip.sm{font-size:11px;padding:6px 14px;min-height:34px}
 .x-chip svg{flex-shrink:0}
 
 /* Pattern Accordion */
@@ -105,16 +115,21 @@ background:#f0f9ff;border:1px solid #bfdbfe;padding:7px 16px;border-radius:24px;
 .cc-warn{font-size:11px;color:var(--amber);font-weight:600}
 .cc-over{font-size:11px;color:var(--red);font-weight:600}
 
-/* Copy */
-.btn-copy{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--ac);background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:7px 16px;cursor:pointer;transition:.15s}
-.btn-copy:active,.btn-copy.done{background:var(--ac);color:#fff;border-color:var(--ac)}
+/* Copy — full-width mobile friendly */
+.btn-copy{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;
+font-size:14px;font-weight:700;color:var(--ac);background:#eff6ff;border:1.5px solid #bfdbfe;
+border-radius:12px;padding:12px 16px;cursor:pointer;transition:.15s;min-height:48px}
+.btn-copy:active{transform:scale(.97)}
+.btn-copy.done{background:var(--ac);color:#fff;border-color:var(--ac)}
 
 /* Media */
 .card-media{padding:0 12px 12px}
 .media-card{border:1px solid var(--bd);border-radius:14px;overflow:hidden;margin-bottom:8px;background:#f8fafc;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .media-card video,.media-card img{width:100%;display:block}
-.dl-bar{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;color:var(--ac);font-size:12px;font-weight:600;text-decoration:none;border-top:1px solid var(--bd);background:#fff}
-.dl-bar:active{background:var(--ac);color:#fff}
+.dl-bar{display:flex;align-items:center;justify-content:center;gap:6px;padding:14px;
+color:var(--ac);font-size:13px;font-weight:600;text-decoration:none;border-top:1px solid var(--bd);
+background:#fff;min-height:48px;transition:.15s}
+.dl-bar:active{background:var(--ac);color:#fff;transform:scale(.98)}
 
 /* Gallery */
 .gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
@@ -144,9 +159,17 @@ background:#f0f9ff;border:1px solid #bfdbfe;padding:7px 16px;border-radius:24px;
 /* Misc */
 .sec-title{font-size:13px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.5px;padding:10px 4px 8px;display:flex;align-items:center;gap:6px}
 .empty{color:#94a3b8;text-align:center;padding:50px 20px;font-size:15px;font-weight:500}
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 28px;border-radius:24px;font-size:13px;font-weight:700;opacity:0;transition:.25s;pointer-events:none;z-index:99;box-shadow:0 4px 12px rgba(22,163,74,.3)}
+.toast{position:fixed;bottom:calc(76px + var(--safe-b));left:50%;transform:translateX(-50%);
+background:var(--green);color:#fff;padding:12px 32px;border-radius:24px;font-size:14px;
+font-weight:700;opacity:0;transition:.25s;pointer-events:none;z-index:99;
+box-shadow:0 4px 16px rgba(22,163,74,.35)}
 .toast.show{opacity:1}
-@media(max-width:480px){.w{padding:0 8px 70px}.tweet-body{font-size:14px}.gg{grid-template-columns:1fr}.tabs{gap:3px}.tab{padding:8px 0}.sched-theme{font-size:12px}}
+@media(max-width:480px){
+    .w{padding:0 10px calc(80px + var(--safe-b))}
+    .tweet-body{font-size:14px}
+    .gg{grid-template-columns:1fr}
+    .sched-card{flex:0 0 calc(50% - 5px);min-width:150px}
+}
 </style>
 </head>
 <body>
@@ -160,45 +183,30 @@ background:#f0f9ff;border:1px solid #bfdbfe;padding:7px 16px;border-radius:24px;
 <div id="app">
 <div class="w">
     <div class="hdr">
-        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-03 10:43</small></div>
+        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-03 10:54</small></div>
         <div class="hdr-stat">
             <div class="stat-chip"><strong>4</strong> posts</div>
             <div class="stat-chip"><strong>5</strong> media</div>
         </div>
     </div>
-    <div class="tabs">
-        <div class="tab on" onclick="sw('p0',this)"><span class="n">&#x1F4CB;</span>Today</div>
-        <div class="tab" onclick="sw('p1',this)"><span class="n">&#x1F3AC;</span>Media</div>
-        <div class="tab" onclick="sw('p2',this)"><span class="n">&#x1F525;</span>Trend</div>
-        <div class="tab" onclick="sw('p3',this)"><span class="n">&#x1F4C1;</span>Archive</div>
-    </div>
 
     <div id="p0" class="pn on">
-        <div class="sec-title">&#x23F0; Today's Schedule</div>
-        <div class="schedule-card">
-            <div class="sched-slot" onclick="document.getElementById('2026-04-03-P4-seedance-landscape.md').scrollIntoView({behavior:'smooth',block:'start'})" style="border-left:4px solid #7c3aed;cursor:pointer">
+        <div class="sec-title">&#x23F0; Schedule</div>
+        <div class="sched-scroll">
+            <div class="sched-card" onclick="document.getElementById('2026-04-03-P4-seedance-landscape.md').scrollIntoView({behavior:'smooth',block:'start'})" style="border-top:3px solid #7c3aed">
                 <div class="sched-time" style="background:#fef3c7;color:#92400e">&#x1F305; 7:00</div>
-                <div class="sched-info">
-                    <div class="sched-pillar">P4 考察</div>
-                    <div class="sched-theme">Seedance 2.0公開の反応分析（自分は使えないけど勢力図整理）</div>
-                </div>
-                <div class="sched-arrow">&#x2192;</div>
+                <div class="sched-pillar">P4 考察</div>
+                <div class="sched-theme">Seedance 2.0公開の反応分析（自分は使えないけど勢力図整理）</div>
             </div>
-            <div class="sched-slot"  style="border-left:4px solid #e8384f;">
+            <div class="sched-card"  style="border-top:3px solid #e8384f">
                 <div class="sched-time" style="background:#dbeafe;color:#1e40af">&#x2600;&#xFE0F; 12:00</div>
-                <div class="sched-info">
-                    <div class="sched-pillar">P1 ブレイクスルー</div>
-                    <div class="sched-theme">**映画技法5種をKling 3.0プロンプトで検証**</div>
-                </div>
-                <div class="sched-arrow">&#x2192;</div>
+                <div class="sched-pillar">P1 ブレイクスルー</div>
+                <div class="sched-theme">**映画技法5種をKling 3.0プロンプトで検証**</div>
             </div>
-            <div class="sched-slot" onclick="document.getElementById('2026-04-03-P2-nb2-kling-workflow.md').scrollIntoView({behavior:'smooth',block:'start'})" style="border-left:4px solid #2563eb;cursor:pointer">
+            <div class="sched-card" onclick="document.getElementById('2026-04-03-P2-nb2-kling-workflow.md').scrollIntoView({behavior:'smooth',block:'start'})" style="border-top:3px solid #2563eb">
                 <div class="sched-time" style="background:#ede9fe;color:#5b21b6">&#x1F319; 21:00</div>
-                <div class="sched-info">
-                    <div class="sched-pillar">P2 ワークフロー</div>
-                    <div class="sched-theme">NB2 Edit→Kling 3.0の実践フロー全公開</div>
-                </div>
-                <div class="sched-arrow">&#x2192;</div>
+                <div class="sched-pillar">P2 ワークフロー</div>
+                <div class="sched-theme">NB2 Edit→Kling 3.0の実践フロー全公開</div>
             </div></div>
         <div class="sec-title">&#x270F;&#xFE0F; Drafts</div>
         <div id="2026-04-03-P4-seedance-landscape.md">
@@ -309,7 +317,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$1.78</span></div>
             <p class="summary">## コンセプト</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
         </div>
         <div class="card-drafts">
         <div class="pat open" onclick="toggle(this)">
@@ -556,7 +564,7 @@ NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
         <div class="card-top">
             <div class="card-meta"><span class="cost-tag">$1.78</span></div>
             
-            <div class="x-row"><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
         </div>
         <div class="card-drafts">
         <div class="pat open" onclick="toggle(this)">
@@ -686,7 +694,7 @@ Klingが「あ、これね」って理解してくれる感覚がある。</pre>
         <div class="card-media"><div class="media-card"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download MP4</a></div><div class="media-card"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download MP4</a></div><div class="media-card"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download MP4</a></div><div class="media-card"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download MP4</a></div><div class="media-card"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download Image</a></div></div>
     </article></div>
     </div>
-    <div id="p1" class="pn"><div class="gg"><div class="gc"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">DL</a></div></div></div></div>
+    <div id="p1" class="pn"><div class="sec-title">&#x1F3AC; Media</div><div class="gg"><div class="gc"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">DL</a></div></div></div></div>
     <div id="p2" class="pn"><div class="sec-title">&#x1F4CA; Trend Intelligence</div><div class="mood-card"><div class="mood-label">&#x1F30A; Today's Mood</div><div class="mood-text">Seedance 2.0がHiggsfield/OpenArtで正式公開（1.6M views, 1779 likes）→ 超バズ中 ただしRyoは使えない → **Seedance以外のテクニック検証で差別化** Kling 3.0のアクション/物理一貫性が継続して高評価 海外で「NB画像→Kling動画」のハイブリッドワークフローが定番化 元Disney/PrimeVideoクリエイターがKling検証を出し始めた（プロ参入の兆候）</div></div>
         <div class="trend-item rank-s">
             <div class="trend-head"><span class="rank-badge rank-s-bg">S</span><span class="trend-title">1. Kling 3.0 × BigMotion_ai：アクション物理一貫性</span></div>
@@ -713,7 +721,7 @@ Klingが「あ、これね」って理解してくれる感覚がある。</pre>
             <div class="trend-body"><div class="trend-detail">切り口: NB2キーフレーム→Kling動画→ElevenLabs音声で短編制作</div></div>
             <div class="trend-links"><a class="x-chip sm" href="https://x.com/MarkLalonde68/status/2039798743835222442" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@MarkLalonde68</a></div>
         </div></div>
-    <div id="p3" class="pn"><div class="dg"><div class="dl">2026-04-02</div>
+    <div id="p3" class="pn"><div class="sec-title">&#x1F4C1; Archive</div><div class="dg"><div class="dl">2026-04-02</div>
     <article class="card" style="">
         <div class="card-top">
             <div class="card-meta"></div>
@@ -751,6 +759,13 @@ Klingが「あ、これね」って理解してくれる感覚がある。</pre>
         <div class="card-media"></div>
     </article></div></div>
 </div>
+<!-- Bottom Tab Bar -->
+<nav class="btm">
+    <div class="bt on" onclick="sw('p0',this)"><span class="bi">&#x1F4CB;</span><span class="bl">Today</span></div>
+    <div class="bt" onclick="sw('p1',this)"><span class="bi">&#x1F3AC;</span><span class="bl">Media</span></div>
+    <div class="bt" onclick="sw('p2',this)"><span class="bi">&#x1F525;</span><span class="bl">Trend</span></div>
+    <div class="bt" onclick="sw('p3',this)"><span class="bi">&#x1F4C1;</span><span class="bl">Archive</span></div>
+</nav>
 </div>
 <div class="toast" id="toast"></div>
 <script>
@@ -759,7 +774,7 @@ function unlock(){const v=document.getElementById('pw').value;
 if(v===H){document.getElementById('lock').classList.add('off');document.getElementById('app').classList.add('on');sessionStorage.setItem('xpw','1')}
 else{const e=document.getElementById('err');e.textContent='Wrong password';document.getElementById('pw').value='';setTimeout(()=>e.textContent='',2000)}}
 if(sessionStorage.getItem('xpw')==='1'){document.getElementById('lock').classList.add('off');document.getElementById('app').classList.add('on')}
-function sw(id,el){document.querySelectorAll('.pn').forEach(e=>e.classList.remove('on'));document.querySelectorAll('.tab').forEach(e=>e.classList.remove('on'));document.getElementById(id).classList.add('on');el.classList.add('on');window.scrollTo({top:0,behavior:'smooth'})}
+function sw(id,el){document.querySelectorAll('.pn').forEach(e=>e.classList.remove('on'));document.querySelectorAll('.bt').forEach(e=>e.classList.remove('on'));document.getElementById(id).classList.add('on');el.classList.add('on');window.scrollTo({top:0,behavior:'smooth'})}
 function toggle(el){const b=el.querySelector('.pat-b');if(!b)return;const isOpen=b.style.display!=='none';el.closest('.card-drafts').querySelectorAll('.pat').forEach(p=>{p.querySelector('.pat-b').style.display='none';p.classList.remove('open')});if(!isOpen){b.style.display='block';el.classList.add('open')}}
 function cp(id){const el=document.getElementById(id);const t=el.textContent;
 if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>toast('Copied!'))}
