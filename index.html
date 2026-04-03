@@ -150,6 +150,14 @@ background:#f0f9ff;border:1px solid #bfdbfe;padding:10px 18px;border-radius:24px
 .date-chip{flex-shrink:0;font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;background:var(--card);border:1px solid var(--bd);color:var(--sub);cursor:pointer;min-height:36px;display:flex;align-items:center}
 .date-chip:active,.date-chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
 
+/* Article cards */
+.article-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--R);padding:16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.article-head{margin-bottom:8px}
+.article-badge{font-size:10px;font-weight:700;color:var(--ac);background:#eff6ff;padding:3px 10px;border-radius:8px;text-transform:uppercase}
+.article-title{font-size:16px;font-weight:700;color:var(--tx);margin-top:8px;line-height:1.4}
+.article-preview{font-size:13px;color:#64748b;line-height:1.6;margin-bottom:12px}
+.article-actions{display:flex;gap:8px}
+
 /* Copy — full-width mobile friendly */
 .btn-copy{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;
 font-size:14px;font-weight:700;color:var(--ac);background:#eff6ff;border:1.5px solid #bfdbfe;
@@ -218,7 +226,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
 <div id="app">
 <div class="w">
     <div class="hdr">
-        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-03 11:38</small></div>
+        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-03 12:12</small></div>
         <div class="hdr-stat">
             <div class="stat-chip"><strong>4</strong> posts</div>
             <div class="stat-chip"><strong>5</strong> media</div>
@@ -256,7 +264,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">パターンA（勢力図整理型 — 推奨）</span></div>
-                <div class="pat-right"><span class="cc-ok">&#x2705; 198字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 366字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
@@ -293,7 +301,7 @@ Seedance → モーション品質（未検証）
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンB（体験起点型）</span></div>
-                <div class="pat-right"><span class="cc-ok">&#x2705; 171字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 315字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -326,7 +334,7 @@ Crane ShotとLow Angleの再現度がかなり良かった。
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンC（問いかけ型）</span></div>
-                <div class="pat-right"><span class="cc-ok">&#x2705; 167字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 298字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -361,14 +369,14 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-1" onclick="event.stopPropagation();toggleStatus('card-1')">Pending</button></div>
             <p class="summary">## コンセプト</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">Draft 1</span></div>
-                <div class="pat-right"><span class="cc-ok">&#x2705; 190字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 334字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
@@ -402,7 +410,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 2</span></div>
-                <div class="pat-right"><span class="cc-over">&#x26D4; 579字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 710字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -443,7 +451,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 3</span></div>
-                <div class="pat-right"><span class="cc-ok">&#x2705; 216字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 402字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -479,7 +487,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 4</span></div>
-                <div class="pat-right"><span class="cc-ok">&#x2705; 183字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 328字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -522,7 +530,7 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">パターンA（ステップ公開型 — 推奨・ブックマーク狙い）</span></div>
-                <div class="pat-right"><span class="cc-ok">&#x2705; 191字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 346字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
@@ -556,7 +564,7 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンB（比較視点型）</span></div>
-                <div class="pat-right"><span class="cc-ok">&#x2705; 172字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 327字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -592,7 +600,7 @@ NB2 Edit → Kling V3 Proの組み合わせ、
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンC（海外発見起点型）</span></div>
-                <div class="pat-right"><span class="cc-ok">&#x2705; 179字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 327字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -629,14 +637,14 @@ NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
         <div class="card-top">
             <div class="card-meta"><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-3" onclick="event.stopPropagation();toggleStatus('card-3')">Pending</button></div>
             
-            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
         </div>
         <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">&#x2B07; Image</a></div></div></div>
         <div class="card-drafts">
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">本文（コピペ用）</span></div>
-                <div class="pat-right"><span class="cc-ok">&#x2705; 190字</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 334字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
@@ -784,6 +792,120 @@ Klingが「あ、これね」って理解してくれる感覚がある。</pre>
         <div class="card-media-area"></div>
         <div class="card-drafts"></div>
     </article></div></div>
+    <div id="p4" class="pn"><div class="sec-title">&#x1F4DD; Articles</div>
+            <div class="article-card">
+                <div class="article-head"><span class="article-badge">verification</span><h3 class="article-title">検証プロデュース 2026-04-02</h3></div>
+                <p class="article-preview">1. **画像**: 既存キャラ参照を使用（`09_AIVideo-studio/Character/` から選択）→ $0 2. **動画**: Seedance 2.0（検証対象そのもの）→ 8秒 1本 ~$0.50 3. 合計: **~$0.50** ``` Step 1: ToolSearch → seedance v1.5 pro i2v の submit/status/result を...</p>
+                <div class="article-actions">
+                    <button class="btn-copy" onclick="cpArticle(this)" data-content="# 検証プロデュース 2026-04-02
+
+## 検証1: Seedance 2.0 Omni-Reference（昼投稿用）
+
+### タイプ: A（新機能検証）
+
+### 生成計画
+1. **画像**: 既存キャラ参照を使用（`09_AIVideo-studio/Character/` から選択）→ $0
+2. **動画**: Seedance 2.0（検証対象そのもの）→ 8秒 1本 ~$0.50
+3. 合計: **~$0.50**
+
+### MCP実行手順
+```
+Step 1: ToolSearch → seedance v1.5 pro i2v の submit/status/result をロード
+Step 2: submit — image_url=既存キャラ画像, prompt=下記, duration=8s
+Step 3: status — 15秒間隔でポーリング
+Step 4: result — 動画URL取得
+```
+
+### 使用プロンプト
+
+#### 短縮版（投稿本文用）
+「cinematic anime, character walks through rain-soaked neon alley, 
+ rack focus from puddle reflection to character face, 
+ detailed fabric movement, volumetric rain」
+
+#### フル版（リプ欄/note用）
+```
+Theatrical quality Japanese anime, ultra-precise character drawing,
+cinematic composition, 8k, $1B budget.
+
+Character walks through rain-soaked neon alley at night.
+Camera: rack focus from puddle reflection to character's face.
+Clothing fabric moves naturally with each step.
+Volumetric rain with neon light refraction.
+Expression: calm determination, slight smile.
+Omni-reference: maintain character consistency from reference image.
+```
+モデル: Seedance 2.0 (via MCP)
+パラメータ: duration=8s, resolution=1080p
+
+---
+
+## 検証2: Kling 3.0 ラックフォーカス × マルチショット（夜投稿用）
+
+### タイプ: C（テクニック検証 Before/After）
+
+### 生成計画
+1. **画像**: NB2 Edit で1枚生成 → $0.03
+2. **動画A**: Kling 3.0 — ラックフォーカスなし（通常プロンプト）→ ~$0.35
+3. **動画B**: Kling 3.0 — ラックフォーカスあり → ~$0.35
+4. **比較動画**: FFmpegで左右結合 → $0
+5. 合計: **~$0.73**
+
+### MCP実行手順
+```
+Step 1: ToolSearch → nano_banana_2_edit の submit/status/result をロード
+Step 2: NB2 submit → 画像URL取得
+Step 3: ToolSearch → kling_video_v3_pro i2v をロード
+Step 4: Kling submit（通常版）→ 動画A URL
+Step 5: Kling submit（ラックフォーカス版）→ 動画B URL
+Step 6: FFmpegで比較動画を結合
+```
+
+### 使用プロンプト
+
+#### 動画A（通常版 — Before）
+```
+Anime character standing in traditional Japanese garden.
+Camera slowly pushes in toward character.
+Cherry blossoms falling. Soft ambient light.
+```
+
+#### 動画B（ラックフォーカス版 — After）
+```
+Anime character standing in traditional Japanese garden.
+Camera: rack focus from foreground cherry blossom branch 
+to character's face, slow 2-second transition.
+Character turns slightly toward camera with gentle expression.
+Cherry blossoms falling. Soft ambient light.
+Multi-shot: 
+Shot 1 (0-3s): wide establishing, garden overview
+Shot 2 (3-7s): rack focus close-up as described
+Shot 3 (7-10s): over-the-shoulder, character looking at garden
+```
+
+#### 短縮版（投稿本文用）
+「rack focus from foreground to character, slow transition,
+ multi-shot: wide → close-up → over-the-shoulder」
+
+### FFmpegコマンド
+```bash
+ffmpeg -i before.mp4 -i after.mp4 \
+  -filter_complex &quot;[0:v]scale=540:-1,pad=540:960:0:(960-ih)/2[l];[1:v]scale=540:-1,pad=540:960:0:(960-ih)/2[r];[l][r]hstack,drawtext=text='Without rack focus':x=80:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2,drawtext=text='With rack focus':x=620:y=30:fontsize=24:fontcolor=white:shadowx=2:shadowy=2&quot; \
+  -t 10 -c:v libx264 -crf 23 kling3_rack_focus_comparison.mp4
+```
+
+---
+
+## 本日のコスト合計
+
+| 検証 | 画像 | 動画 | FFmpeg | 合計 |
+|------|------|------|--------|------|
+| Seedance 2.0 | $0 (既存) | $0.50 | - | $0.50 |
+| Kling 3.0 比較 | $0.03 | $0.70 | $0 | $0.73 |
+| **合計** | **$0.03** | **$1.20** | **$0** | **$1.23 (¥185)** |
+">Copy Full Text</button>
+                </div>
+            </div></div>
 </div>
 <!-- Bottom Tab Bar -->
 <nav class="btm">
@@ -791,6 +913,7 @@ Klingが「あ、これね」って理解してくれる感覚がある。</pre>
     <div class="bt" onclick="sw('p1',this)"><span class="bi">&#x1F3AC;</span><span class="bl">Media</span></div>
     <div class="bt" onclick="sw('p2',this)"><span class="bi">&#x1F525;</span><span class="bl">Trend</span></div>
     <div class="bt" onclick="sw('p3',this)"><span class="bi">&#x1F4C1;</span><span class="bl">Archive</span></div>
+    <div class="bt" onclick="sw('p4',this)"><span class="bi">&#x1F4DD;</span><span class="bl">Article</span></div>
 </nav>
 </div>
 <div class="toast" id="toast"></div>
@@ -828,6 +951,14 @@ toast('Copied! Opening X...');setTimeout(()=>window.open('https://x.com/compose/
 const b=el.closest('.pat-b').querySelector('.btn-post');
 if(b){b.innerHTML='\u2705 Copied!';setTimeout(()=>{b.innerHTML='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post'},2000)}}
 function scrollToDate(d){const el=document.getElementById('arch-'+d);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+
+/* Article copy */
+function cpArticle(btn){const t=btn.getAttribute('data-content');
+if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>toast('Article copied!'))}
+else{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';
+document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);toast('Article copied!')}
+btn.textContent='Copied!';btn.classList.add('done');
+setTimeout(()=>{btn.textContent='Copy Full Text';btn.classList.remove('done')},1500)}
 </script>
 </body>
 </html>
