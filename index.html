@@ -115,6 +115,41 @@ background:#f0f9ff;border:1px solid #bfdbfe;padding:10px 18px;border-radius:24px
 .cc-warn{font-size:11px;color:var(--amber);font-weight:600}
 .cc-over{font-size:11px;color:var(--red);font-weight:600}
 
+/* Status toggle */
+.status-btn{font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;border:1.5px solid #cbd5e1;background:#f8fafc;color:#64748b;cursor:pointer;transition:.15s;margin-left:auto}
+.status-btn.posted{background:#dcfce7;color:#16a34a;border-color:#86efac}
+
+/* Media horizontal scroll */
+.card-media-area{padding:0 12px}
+.mg-label{font-size:11px;font-weight:700;color:var(--sub);padding:4px 4px 6px}
+.mg-scroll{display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:10px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.mg-scroll::-webkit-scrollbar{display:none}
+.mg-item{flex:0 0 80%;min-width:200px;max-width:320px;border:1px solid var(--bd);border-radius:14px;overflow:hidden;background:#f8fafc;scroll-snap-align:start;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.mg-item video,.mg-item img{width:100%;display:block}
+
+/* Thread replies */
+.thread-reply{display:flex;gap:10px;padding:8px 0 0 20px}
+.thread-line{width:2px;background:#e2e8f0;border-radius:1px;flex-shrink:0;min-height:40px}
+.thread-content{flex:1;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
+.thread-label{font-size:11px;font-weight:600;color:var(--sub);margin-bottom:4px}
+.reply-body{font-size:13px;line-height:1.7}
+.btn-copy-sm{font-size:11px;font-weight:600;color:var(--ac);background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:6px 14px;cursor:pointer;margin-top:8px;display:inline-flex;align-items:center;gap:4px;min-height:36px}
+
+/* Action row — Copy & Post */
+.action-row{display:flex;gap:8px;margin-top:12px}
+.action-row .btn-copy{flex:1}
+.btn-post{flex:2;display:flex;align-items:center;justify-content:center;gap:6px;font-size:14px;font-weight:700;color:#fff;background:#000;border:none;border-radius:12px;padding:12px 16px;cursor:pointer;min-height:48px;transition:.15s}
+.btn-post:active{transform:scale(.97);background:#1d9bf0}
+
+/* Pattern header right side */
+.pat-right{display:flex;align-items:center;gap:8px}
+
+/* Date nav for archive */
+.date-nav{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px 0 12px;scrollbar-width:none}
+.date-nav::-webkit-scrollbar{display:none}
+.date-chip{flex-shrink:0;font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;background:var(--card);border:1px solid var(--bd);color:var(--sub);cursor:pointer;min-height:36px;display:flex;align-items:center}
+.date-chip:active,.date-chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+
 /* Copy — full-width mobile friendly */
 .btn-copy{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;
 font-size:14px;font-weight:700;color:var(--ac);background:#eff6ff;border:1.5px solid #bfdbfe;
@@ -183,7 +218,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
 <div id="app">
 <div class="w">
     <div class="hdr">
-        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-03 10:54</small></div>
+        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-03 11:38</small></div>
         <div class="hdr-stat">
             <div class="stat-chip"><strong>4</strong> posts</div>
             <div class="stat-chip"><strong>5</strong> media</div>
@@ -210,17 +245,18 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
             </div></div>
         <div class="sec-title">&#x270F;&#xFE0F; Drafts</div>
         <div id="2026-04-03-P4-seedance-landscape.md">
-    <article class="card" style="border-left:4px solid #7c3aed">
+    <article class="card" style="border-left:4px solid #7c3aed" id="card-0">
         <div class="card-top">
-            <div class="card-meta"><span class="time-slot" style="background:#fef3c7;color:#92400e">&#x1F305; 7:00</span><span class="pill" style="background:#f5f3ff;color:#7c3aed">&#x1F4AC; Insight</span></div>
+            <div class="card-meta"><span class="time-slot" style="background:#fef3c7;color:#92400e">&#x1F305; 7:00</span><span class="pill" style="background:#f5f3ff;color:#7c3aed">&#x1F4AC; Insight</span><button class="status-btn" id="st-card-0" onclick="event.stopPropagation();toggleStatus('card-0')">Pending</button></div>
             <p class="summary">Seedance 2.0公開 — 動画生成AI勢力図の変化</p>
             <div class="x-row"></div>
         </div>
+        <div class="card-media-area"></div>
         <div class="card-drafts">
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
-                <div class="pat-left"><span class="rec-badge">Recommended</span><span class="pat-label">パターンA（勢力図整理型 — 推奨）</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">パターンA（勢力図整理型 — 推奨）</span></div>
+                <div class="pat-right"><span class="cc-ok">&#x2705; 198字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
@@ -241,20 +277,23 @@ Seedance → モーション品質（未検証）
 
 全部使える必要はなくて、
 自分の作風に合うものを深掘りするほうが結果出る印象。</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-ok">&#x2705; 198字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b0-0')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b0-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b0-0')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div>
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンB（体験起点型）</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-right"><span class="cc-ok">&#x2705; 171字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -271,20 +310,23 @@ Crane ShotとLow Angleの再現度がかなり良かった。
 
 ツールは増え続けるけど、
 「自分の制作スタイルに合うやつを深く使う」が一番効率いい気がしてる。</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-ok">&#x2705; 171字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b0-1')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b0-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b0-1')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div>
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンC（問いかけ型）</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-right"><span class="cc-ok">&#x2705; 167字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -301,29 +343,32 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
 自分は「カメラワーク制御」と「キャラ一貫性」に絞って検証してる。
 
 みんなは何を軸にツール選んでるんだろう。</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-ok">&#x2705; 167字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b0-2')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b0-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b0-2')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div></div>
-        <div class="card-media"></div>
     </article></div><div id="2026-04-03-P3-cinema-techniques.md">
-    <article class="card" style="border-left:4px solid #d97706">
+    <article class="card" style="border-left:4px solid #d97706" id="card-1">
         <div class="card-top">
-            <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$1.78</span></div>
+            <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-1" onclick="event.stopPropagation();toggleStatus('card-1')">Pending</button></div>
             <p class="summary">## コンセプト</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
         </div>
+        <div class="card-media-area"></div>
         <div class="card-drafts">
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
-                <div class="pat-left"><span class="rec-badge">Recommended</span><span class="pat-label">Draft 1</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">Draft 1</span></div>
+                <div class="pat-right"><span class="cc-ok">&#x2705; 190字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
@@ -341,20 +386,23 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
 
 同一画像から5パターン生成。
 プロンプトと結果はリプ欄に👇</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-ok">&#x2705; 190字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b1-0')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-0')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div>
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 2</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-right"><span class="cc-over">&#x26D4; 579字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -379,20 +427,23 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
 
 全てKling V3 Pro / 8秒 / 16:9 / 音声ON
 元画像はNano Banana 2 Editで生成（$0.03）</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-over">&#x26D4; 579字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b1-1')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-1')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div>
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 3</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-right"><span class="cc-ok">&#x2705; 216字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -412,20 +463,23 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
 プロンプト全文はリプ欄に👇
 
 [添付: 5種の動画 or 比較グリッド]</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-ok">&#x2705; 216字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b1-2')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-2')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div>
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 4</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-right"><span class="cc-ok">&#x2705; 183字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -443,29 +497,32 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
 
 全部同じ画像からの検証。
 プロンプトと結果を全部リプ欄に載せておきます🎬</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-ok">&#x2705; 183字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b1-3')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1-3')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1-3')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div></div>
-        <div class="card-media"></div>
     </article></div><div id="2026-04-03-P2-nb2-kling-workflow.md">
-    <article class="card" style="border-left:4px solid #2563eb">
+    <article class="card" style="border-left:4px solid #2563eb" id="card-2">
         <div class="card-top">
-            <div class="card-meta"><span class="time-slot" style="background:#ede9fe;color:#5b21b6">&#x1F319; 21:00</span><span class="pill" style="background:#eff6ff;color:#2563eb">&#x2699;&#xFE0F; Workflow</span></div>
+            <div class="card-meta"><span class="time-slot" style="background:#ede9fe;color:#5b21b6">&#x1F319; 21:00</span><span class="pill" style="background:#eff6ff;color:#2563eb">&#x2699;&#xFE0F; Workflow</span><button class="status-btn" id="st-card-2" onclick="event.stopPropagation();toggleStatus('card-2')">Pending</button></div>
             <p class="summary">画像→動画の実践ワークフロー全公開</p>
             <div class="x-row"><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
         </div>
+        <div class="card-media-area"></div>
         <div class="card-drafts">
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
-                <div class="pat-left"><span class="rec-badge">Recommended</span><span class="pat-label">パターンA（ステップ公開型 — 推奨・ブックマーク狙い）</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">パターンA（ステップ公開型 — 推奨・ブックマーク狙い）</span></div>
+                <div class="pat-right"><span class="cc-ok">&#x2705; 191字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
@@ -483,20 +540,23 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
 
 1シーン $0.38、30秒動画で$2くらい。
 画像の時点で構図を追い込めるから、動画の成功率がかなり上がる。</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-ok">&#x2705; 191字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b2-0')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b2-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b2-0')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div>
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンB（比較視点型）</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-right"><span class="cc-ok">&#x2705; 172字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -516,20 +576,23 @@ Rack Focus / Dolly Zoom / Whip Pan / Low Angle / Crane Shot
 
 NB2 Edit → Kling V3 Proの組み合わせ、
 コスパと品質のバランスが今一番いい気がしてる。</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-ok">&#x2705; 172字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b2-1')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b2-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b2-1')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div>
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">パターンC（海外発見起点型）</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-right"><span class="cc-ok">&#x2705; 179字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
@@ -548,29 +611,32 @@ NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
 1シーン40円。失敗しても画像からリトライ可能。
 
 プロも同じ結論に辿り着いてるのは心強い。</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-ok">&#x2705; 179字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b2-2')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b2-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b2-2')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div></div>
-        <div class="card-media"></div>
     </article></div><div id="2026-04-03-cinema-techniques-final.md">
-    <article class="card" style="">
+    <article class="card" style="" id="card-3">
         <div class="card-top">
-            <div class="card-meta"><span class="cost-tag">$1.78</span></div>
+            <div class="card-meta"><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-3" onclick="event.stopPropagation();toggleStatus('card-3')">Pending</button></div>
             
-            <div class="x-row"><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
         </div>
+        <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">&#x2B07; Image</a></div></div></div>
         <div class="card-drafts">
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
-                <div class="pat-left"><span class="rec-badge">Recommended</span><span class="pat-label">本文（コピペ用）</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
+                <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">本文（コピペ用）</span></div>
+                <div class="pat-right"><span class="cc-ok">&#x2705; 190字</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
@@ -588,28 +654,13 @@ NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
 
 同一画像から5パターン生成。
 プロンプトと結果はリプ欄に👇</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-ok">&#x2705; 190字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b3-0')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
-                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="pat" onclick="toggle(this)">
-            <div class="pat-h">
-                <div class="pat-left"><span class="pat-label">リプ欄1（プロンプト全文 — コピペ用）</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
-            </div>
-            <div class="pat-b" style="display:none">
-                <div class="tweet-sim">
-                    <div class="tweet-head">
-                        <div class="tweet-avatar">R</div>
-                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
-                    </div>
-                    <pre class="tweet-body" id="b3-1">使用プロンプト全文（全てKling V3 Pro / 8秒 / 16:9 / 音声ON）
+                
+                <div class="thread-reply">
+                    <div class="thread-line"></div>
+                    <div class="thread-content">
+                        <div class="thread-label">リプ欄1（プロンプト全文 — コピペ用）</div>
+                        <pre class="tweet-body reply-body" id="r3-0-0">使用プロンプト全文（全てKling V3 Pro / 8秒 / 16:9 / 音声ON）
 
 ①Rack Focus:
 「rack focus from foreground cherry blossom to character face, slow 2-second transition, cinematic shallow depth of field」
@@ -619,28 +670,14 @@ NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
 
 ③Whip Pan:
 「whip pan from left to right with motion blur, transitioning from neon signs to reveal character」</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-over">&#x26D4; 348字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b3-1')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
+                        <button class="btn-copy-sm" onclick="event.stopPropagation();cp('r3-0-0')">Copy</button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="pat" onclick="toggle(this)">
-            <div class="pat-h">
-                <div class="pat-left"><span class="pat-label">リプ欄2（プロンプト続き）</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
-            </div>
-            <div class="pat-b" style="display:none">
-                <div class="tweet-sim">
-                    <div class="tweet-head">
-                        <div class="tweet-avatar">R</div>
-                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
-                    </div>
-                    <pre class="tweet-body" id="b3-2">④Low Angle Tracking:
+                <div class="thread-reply">
+                    <div class="thread-line"></div>
+                    <div class="thread-content">
+                        <div class="thread-label">リプ欄2（プロンプト続き）</div>
+                        <pre class="tweet-body reply-body" id="r3-0-1">④Low Angle Tracking:
 「low angle tracking shot, camera near ground level looking up, puddle reflections, character walks forward」
 
 ⑤Crane Shot:
@@ -650,28 +687,14 @@ NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
 動画5本の合計コスト: $1.78（¥267）
 
 ポイント: カメラワークの名前を英語でそのまま書くのが一番効く✨</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-over">&#x26D4; 295字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b3-2')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
+                        <button class="btn-copy-sm" onclick="event.stopPropagation();cp('r3-0-1')">Copy</button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="pat" onclick="toggle(this)">
-            <div class="pat-h">
-                <div class="pat-left"><span class="pat-label">リプ欄3（検証結果の感想）</span></div>
-                <span class="pat-arrow">&#x25BC;</span>
-            </div>
-            <div class="pat-b" style="display:none">
-                <div class="tweet-sim">
-                    <div class="tweet-head">
-                        <div class="tweet-avatar">R</div>
-                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
-                    </div>
-                    <pre class="tweet-body" id="b3-3">検証結果の印象:
+                <div class="thread-reply">
+                    <div class="thread-line"></div>
+                    <div class="thread-content">
+                        <div class="thread-label">リプ欄3（検証結果の感想）</div>
+                        <pre class="tweet-body reply-body" id="r3-0-2">検証結果の印象:
 
 Crane Shot → 垂直移動の再現度が一番高い。スケール感も出る
 Low Angle → 地面からの見上げ構図、かなり自然
@@ -681,17 +704,20 @@ Dolly Zoom → 背景圧縮の再現が最も難しい（挑戦的なプロン�
 
 映画のカメラワーク用語をそのまま英語で入れると、
 Klingが「あ、これね」って理解してくれる感覚がある。</pre>
-                    <div class="tweet-foot">
-                        <span class="cc-warn">&#x26A0;&#xFE0F; 221字</span>
-                        <button class="btn-copy" onclick="event.stopPropagation();cp('b3-3')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                            Copy
-                        </button>
+                        <button class="btn-copy-sm" onclick="event.stopPropagation();cp('r3-0-2')">Copy</button>
                     </div>
                 </div>
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b3-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b3-0')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post
+                </button>
+            </div>
             </div>
         </div></div>
-        <div class="card-media"><div class="media-card"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download MP4</a></div><div class="media-card"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download MP4</a></div><div class="media-card"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download MP4</a></div><div class="media-card"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download MP4</a></div><div class="media-card"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Download Image</a></div></div>
     </article></div>
     </div>
     <div id="p1" class="pn"><div class="sec-title">&#x1F3AC; Media</div><div class="gg"><div class="gc"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">DL</a></div></div></div></div>
@@ -721,42 +747,42 @@ Klingが「あ、これね」って理解してくれる感覚がある。</pre>
             <div class="trend-body"><div class="trend-detail">切り口: NB2キーフレーム→Kling動画→ElevenLabs音声で短編制作</div></div>
             <div class="trend-links"><a class="x-chip sm" href="https://x.com/MarkLalonde68/status/2039798743835222442" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@MarkLalonde68</a></div>
         </div></div>
-    <div id="p3" class="pn"><div class="sec-title">&#x1F4C1; Archive</div><div class="dg"><div class="dl">2026-04-02</div>
-    <article class="card" style="">
+    <div id="p3" class="pn"><div class="sec-title">&#x1F4C1; Archive</div><div class="date-nav"><div class="date-chip" onclick="scrollToDate('2026-04-02')">2026-04-02</div></div><div class="dg" id="arch-2026-04-02"><div class="dl">2026-04-02</div>
+    <article class="card" style="" id="card-200">
         <div class="card-top">
-            <div class="card-meta"></div>
+            <div class="card-meta"><button class="status-btn" id="st-card-200" onclick="event.stopPropagation();toggleStatus('card-200')">Pending</button></div>
             
             <div class="x-row"></div>
         </div>
+        <div class="card-media-area"></div>
         <div class="card-drafts"></div>
-        <div class="card-media"></div>
     </article>
-    <article class="card" style="border-left:4px solid #7c3aed">
+    <article class="card" style="border-left:4px solid #7c3aed" id="card-201">
         <div class="card-top">
-            <div class="card-meta"><span class="pill" style="background:#f5f3ff;color:#7c3aed">&#x1F4AC; Insight</span></div>
+            <div class="card-meta"><span class="pill" style="background:#f5f3ff;color:#7c3aed">&#x1F4AC; Insight</span><button class="status-btn" id="st-card-201" onclick="event.stopPropagation();toggleStatus('card-201')">Pending</button></div>
             <p class="summary">Sora終了後の勢力図</p>
             <div class="x-row"></div>
         </div>
+        <div class="card-media-area"></div>
         <div class="card-drafts"></div>
-        <div class="card-media"></div>
     </article>
-    <article class="card" style="border-left:4px solid #2563eb">
+    <article class="card" style="border-left:4px solid #2563eb" id="card-202">
         <div class="card-top">
-            <div class="card-meta"><span class="pill" style="background:#eff6ff;color:#2563eb">&#x2699;&#xFE0F; Workflow</span></div>
+            <div class="card-meta"><span class="pill" style="background:#eff6ff;color:#2563eb">&#x2699;&#xFE0F; Workflow</span><button class="status-btn" id="st-card-202" onclick="event.stopPropagation();toggleStatus('card-202')">Pending</button></div>
             <p class="summary">Kling 3.0のラックフォーカス × マルチショットで短編制作</p>
             <div class="x-row"></div>
         </div>
+        <div class="card-media-area"></div>
         <div class="card-drafts"></div>
-        <div class="card-media"></div>
     </article>
-    <article class="card" style="border-left:4px solid #e8384f">
+    <article class="card" style="border-left:4px solid #e8384f" id="card-203">
         <div class="card-top">
-            <div class="card-meta"><span class="pill" style="background:#fef2f2;color:#e8384f">&#x1F525; Breakthrough</span></div>
+            <div class="card-meta"><span class="pill" style="background:#fef2f2;color:#e8384f">&#x1F525; Breakthrough</span><button class="status-btn" id="st-card-203" onclick="event.stopPropagation();toggleStatus('card-203')">Pending</button></div>
             <p class="summary">Seedance 2.0 Omni-Reference実検証</p>
             <div class="x-row"></div>
         </div>
+        <div class="card-media-area"></div>
         <div class="card-drafts"></div>
-        <div class="card-media"></div>
     </article></div></div>
 </div>
 <!-- Bottom Tab Bar -->
@@ -782,6 +808,26 @@ else{const a=document.createElement('textarea');a.value=t;a.style.cssText='posit
 const b=el.closest('.tweet-sim').querySelector('.btn-copy');
 if(b){b.innerHTML='&#x2705; Copied!';b.classList.add('done');setTimeout(()=>{b.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy';b.classList.remove('done')},1500)}}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+/* Status toggle */
+function toggleStatus(id){const btn=document.getElementById('st-'+id);const k='xst-'+id;
+const posted=localStorage.getItem(k)==='1';
+if(posted){localStorage.removeItem(k);btn.textContent='Pending';btn.classList.remove('posted')}
+else{localStorage.setItem(k,'1');btn.textContent='Posted \u2713';btn.classList.add('posted');toast('Marked as posted')}}
+/* Restore status on load */
+document.querySelectorAll('.status-btn').forEach(btn=>{const id=btn.id.replace('st-','');const k='xst-'+id;
+if(localStorage.getItem(k)==='1'){btn.textContent='Posted \u2713';btn.classList.add('posted')}});
+
+/* Copy & open X compose */
+function copyAndPost(id){const el=document.getElementById(id);const t=el.textContent;
+if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>{
+toast('Copied! Opening X...');
+setTimeout(()=>window.open('https://x.com/compose/post','_blank'),400)})}
+else{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';
+document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);
+toast('Copied! Opening X...');setTimeout(()=>window.open('https://x.com/compose/post','_blank'),400)}
+const b=el.closest('.pat-b').querySelector('.btn-post');
+if(b){b.innerHTML='\u2705 Copied!';setTimeout(()=>{b.innerHTML='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post'},2000)}}
+function scrollToDate(d){const el=document.getElementById('arch-'+d);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
 </script>
 </body>
 </html>
