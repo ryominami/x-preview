@@ -239,6 +239,31 @@ background:#fff;min-height:48px;transition:.15s}
 .progress-track{height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);border-radius:3px;transition:width .5s ease}
 
+/* Quick Post card */
+.quick-post{background:linear-gradient(135deg,#2563eb,#7c3aed);border-radius:var(--R);padding:18px;margin-bottom:14px;color:#fff;box-shadow:0 4px 16px rgba(37,99,235,.3)}
+.qp-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;opacity:.7;margin-bottom:4px}
+.qp-title{font-size:18px;font-weight:800;margin-bottom:4px}
+.qp-time{font-size:13px;opacity:.8;margin-bottom:12px}
+.qp-text{font-size:14px;line-height:1.7;background:rgba(255,255,255,.12);border-radius:12px;padding:14px;margin-bottom:12px;white-space:pre-wrap;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);max-height:200px;overflow-y:auto}
+.qp-actions{display:flex;gap:8px}
+.qp-btn{flex:1;padding:14px;border-radius:12px;border:none;font-size:14px;font-weight:700;cursor:pointer;min-height:50px;transition:.15s}
+.qp-btn:active{transform:scale(.96)}
+.qp-copy{background:rgba(255,255,255,.2);color:#fff}
+.qp-post{background:#fff;color:#2563eb}
+.qp-done{font-size:13px;text-align:center;padding:20px;opacity:.7}
+
+/* Streak row */
+.streak-row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--bd)}
+.streak-info{display:flex;align-items:center;gap:6px}
+.streak-fire{font-size:18px}
+.streak-num{font-size:20px;font-weight:800;color:var(--ac)}
+.streak-label{font-size:11px;color:var(--sub);font-weight:600}
+.pref-info{font-size:11px;color:var(--sub);text-align:right}
+.pref-fav{font-weight:700;color:var(--ac)}
+
+/* Pulse animation for posted confirmation */
+@keyframes pulse-posted{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
 /* (old article expand removed - now using article-reader) */
 
 /* Engage tab */
@@ -298,7 +323,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
 <div id="app">
 <div class="w">
     <div class="hdr">
-        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-04 10:42</small></div>
+        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-04 11:06</small></div>
         <div class="hdr-stat">
             <button onclick="location.reload()" class="refresh-btn">&#x1F504;</button>
             <div class="stat-chip"><strong>4</strong> posts</div>
@@ -307,9 +332,11 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
     </div>
 
     <div id="p0" class="pn on">
+        <div class="quick-post" id="quick-post"></div>
         <div class="progress-bar-container">
             <div class="progress-info"><span>Today's Posts</span><span id="prog-text">4 drafts</span></div>
             <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+            <div class="streak-row" id="streak-row"></div>
         </div>
         <div class="sec-title">&#x23F0; Schedule</div>
         <div class="sched-scroll">
@@ -1871,7 +1898,7 @@ Shot 3 (7-10s): over-the-shoulder, character looking at garden</code></pre>
                     
                     <div class="engage-pat">
                         <div class="engage-pat-label">Pattern A <span class="engage-chars">272/280</span></div>
-                        <pre class="engage-text" id="qt-8509-0">Claude Codeで動画制作を完結させる流れ、自分も同じ方向で攻めてる
+                        <pre class="engage-text" id="qt-6526-0">Claude Codeで動画制作を完結させる流れ、自分も同じ方向で攻めてる
 
 自分の構成はこう:
 - 11エージェント+6品質ゲート体制
@@ -1881,13 +1908,13 @@ Shot 3 (7-10s): over-the-shoulder, character looking at garden</code></pre>
 
 Renoise連携は新しい視点。音楽起点の制作フロー、試してみたい</pre>
                         <div class="engage-actions">
-                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-8509-0')">Copy</button>
-                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-8509-0')">Copy &amp; Quote</button>
+                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-6526-0')">Copy</button>
+                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-6526-0')">Copy &amp; Quote</button>
                         </div>
                     </div>
                     <div class="engage-pat">
                         <div class="engage-pat-label">Pattern B <span class="engage-chars">255/280</span></div>
-                        <pre class="engage-text" id="qt-8509-1">Claude Code×動画AI、同じ沼にいる人がいて嬉しい
+                        <pre class="engage-text" id="qt-6526-1">Claude Code×動画AI、同じ沼にいる人がいて嬉しい
 
 自分の実測コスト:
 - 60秒アニメ全工程で~$2.73
@@ -1898,13 +1925,13 @@ Renoise連携は新しい視点。音楽起点の制作フロー、試してみ�
 
 Seedance 2.0も並列に組み込みたいところ</pre>
                         <div class="engage-actions">
-                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-8509-1')">Copy</button>
-                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-8509-1')">Copy &amp; Quote</button>
+                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-6526-1')">Copy</button>
+                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-6526-1')">Copy &amp; Quote</button>
                         </div>
                     </div>
                     <div class="engage-pat">
                         <div class="engage-pat-label">Pattern C <span class="engage-chars">227/280</span></div>
-                        <pre class="engage-text" id="qt-8509-2">Good cheatsheet. My real production setup:
+                        <pre class="engage-text" id="qt-6526-2">Good cheatsheet. My real production setup:
 
 - 63 custom Skills (video/image/audio/editing)
 - 5 Hooks: 4 Block + 1 Advisory
@@ -1912,13 +1939,13 @@ Seedance 2.0も並列に組み込みたいところ</pre>
 
 Skills + Hooks = full production studio.</pre>
                         <div class="engage-actions">
-                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-8509-2')">Copy</button>
-                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-8509-2')">Copy &amp; Quote</button>
+                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-6526-2')">Copy</button>
+                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-6526-2')">Copy &amp; Quote</button>
                         </div>
                     </div>
                     <div class="engage-pat">
                         <div class="engage-pat-label">Pattern D <span class="engage-chars">214/280</span></div>
-                        <pre class="engage-text" id="qt-8509-3">Real data from Claude Code as anime pipeline:
+                        <pre class="engage-text" id="qt-6526-3">Real data from Claude Code as anime pipeline:
 
 - 63 Skills, 11 categories
 - 11 agents + 6 quality gates
@@ -1926,13 +1953,13 @@ Skills + Hooks = full production studio.</pre>
 
 The real unlock: treating Skills as a team, not individual tools.</pre>
                         <div class="engage-actions">
-                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-8509-3')">Copy</button>
-                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-8509-3')">Copy &amp; Quote</button>
+                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-6526-3')">Copy</button>
+                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-6526-3')">Copy &amp; Quote</button>
                         </div>
                     </div>
                     <div class="engage-pat">
                         <div class="engage-pat-label">Pattern E <span class="engage-chars">257/280</span></div>
-                        <pre class="engage-text" id="qt-8509-4">Real cost data for 60s anime:
+                        <pre class="engage-text" id="qt-6526-4">Real cost data for 60s anime:
 
 - Images: NB2 Edit $0.03/ea
 - Video: Kling $0.35/8s, Vidu Q3 $0.90/10s
@@ -1942,13 +1969,13 @@ The real unlock: treating Skills as a team, not individual tools.</pre>
 
 Vidu Q3 actual = $0.90 (not $3.00 on pricing page). Even paid tools are pennies now.</pre>
                         <div class="engage-actions">
-                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-8509-4')">Copy</button>
-                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-8509-4')">Copy &amp; Quote</button>
+                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-6526-4')">Copy</button>
+                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-6526-4')">Copy &amp; Quote</button>
                         </div>
                     </div>
                     <div class="engage-pat">
                         <div class="engage-pat-label">Pattern F <span class="engage-chars">277/280</span></div>
-                        <pre class="engage-text" id="qt-8509-5">Cost saving isn't free tools — it's building a pipeline.
+                        <pre class="engage-text" id="qt-6526-5">Cost saving isn't free tools — it's building a pipeline.
 
 FAL MCP + Claude Code:
 - 200+ AI tools, 1 interface
@@ -1958,8 +1985,8 @@ FAL MCP + Claude Code:
 
 Runway alt isn't just Kling — it's Kling+Vidu+Hailuo in parallel with auto selection.</pre>
                         <div class="engage-actions">
-                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-8509-5')">Copy</button>
-                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-8509-5')">Copy &amp; Quote</button>
+                            <button class="btn-copy" onclick="event.stopPropagation();cp('qt-6526-5')">Copy</button>
+                            <button class="btn-post" onclick="event.stopPropagation();copyAndPost('qt-6526-5')">Copy &amp; Quote</button>
                         </div>
                     </div>
                 </div><div class="sec-title">&#x1F3AF; Targets</div><div class="target-list"><div class="target-item"><span class="target-handle">@onofumi_AI**</span><span class="target-info">~5K推定 | Claude Code × Seedance 2.0 動画エージェント</span></div><a class="x-chip sm" href="https://x.com/onofumi_AI/status/2040021037493153876" target="_blank" rel="noopener" style="margin:0 16px 12px"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a><a class="x-chip sm" href="https://x.com/onofumi_AI/status/2039900345372225756" target="_blank" rel="noopener" style="margin:0 16px 12px"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a><div class="target-item"><span class="target-handle">@seiiiiiiiiiiru**</span><span class="target-info">~10K推定 | Seedance 2.0 マルチプラットフォーム検証</span></div><a class="x-chip sm" href="https://x.com/seiiiiiiiiiiru/status/2039867063800627565" target="_blank" rel="noopener" style="margin:0 16px 12px"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a><a class="x-chip sm" href="https://x.com/seiiiiiiiiiiru/status/2039858598030062020" target="_blank" rel="noopener" style="margin:0 16px 12px"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a><a class="x-chip sm" href="https://x.com/seiiiiiiiiiiru/status/2039863383181476119" target="_blank" rel="noopener" style="margin:0 16px 12px"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a><div class="target-item"><span class="target-handle">@GilangR90760584**</span><span class="target-info">~3K推定 | Kling 3.0 アクション動画クリエイター</span></div><a class="x-chip sm" href="https://x.com/GilangR90760584/status/2040065641340911868" target="_blank" rel="noopener" style="margin:0 16px 12px"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a><div class="target-item"><span class="target-handle">@sjsandeep_jain**</span><span class="target-info">~5K推定 | Claude Code チートシート/ワークフロー解説</span></div><a class="x-chip sm" href="https://x.com/sjsandeep_jain/status/2039885599872552991" target="_blank" rel="noopener" style="margin:0 16px 12px"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a><div class="target-item"><span class="target-handle">@Suryanshti777**</span><span class="target-info">~3K推定 | Claude MCP × UI自動生成</span></div><a class="x-chip sm" href="https://x.com/Suryanshti777/status/2039982962465554739" target="_blank" rel="noopener" style="margin:0 16px 12px"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a><div class="target-item"><span class="target-handle">@FellMentKE**</span><span class="target-info">~8K推定 | 有料AIツールの無料代替リスト</span></div><a class="x-chip sm" href="https://x.com/FellMentKE/status/2039930052687864306" target="_blank" rel="noopener" style="margin:0 16px 12px"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a><div class="target-item"><span class="target-handle">@HPVideoAI**</span><span class="target-info">~2K推定 | AI動画ツール総合解説</span></div><a class="x-chip sm" href="https://x.com/HPVideoAI/status/2039978515161063858" target="_blank" rel="noopener" style="margin:0 16px 12px"><svg viewBox="0 0 24 24" width="12" height="12"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Open</a></div></div>
@@ -1984,6 +2011,7 @@ if(sessionStorage.getItem('xpw')==='1'){document.getElementById('lock').classLis
 function sw(id,el){document.querySelectorAll('.pn').forEach(e=>e.classList.remove('on'));document.querySelectorAll('.bt').forEach(e=>e.classList.remove('on'));document.getElementById(id).classList.add('on');el.classList.add('on');window.scrollTo({top:0,behavior:'smooth'})}
 function toggle(el){const b=el.querySelector('.pat-b');if(!b)return;const isOpen=b.style.display!=='none';el.closest('.card-drafts').querySelectorAll('.pat').forEach(p=>{p.querySelector('.pat-b').style.display='none';p.classList.remove('open')});if(!isOpen){b.style.display='block';el.classList.add('open')}}
 function cp(id){const el=document.getElementById(id);const t=el.textContent;
+logSelection(id);
 if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>toast('Copied!'))}
 else{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);toast('Copied!')}
 const b=el.closest('.tweet-sim').querySelector('.btn-copy');
@@ -1994,7 +2022,7 @@ function toggleStatus(id){const btn=document.getElementById('st-'+id);const k='x
 const posted=localStorage.getItem(k)==='1';
 if(posted){localStorage.removeItem(k);btn.textContent='Pending';btn.classList.remove('posted')}
 else{localStorage.setItem(k,'1');btn.textContent='Posted \u2713';btn.classList.add('posted');toast('Marked as posted')}
-updateProgress()}
+updateProgress();updateStreak()}
 /* Restore status on load */
 document.querySelectorAll('.status-btn').forEach(btn=>{const id=btn.id.replace('st-','');const k='xst-'+id;
 if(localStorage.getItem(k)==='1'){btn.textContent='Posted \u2713';btn.classList.add('posted')}});
@@ -2019,7 +2047,17 @@ else{const a=document.createElement('textarea');a.value=t;a.style.cssText='posit
 document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);
 toast('Copied! Opening X...');setTimeout(()=>window.open('https://x.com/compose/post','_blank'),400)}
 const b=el.closest('.pat-b').querySelector('.btn-post');
-if(b){b.innerHTML='\u2705 Copied!';setTimeout(()=>{b.innerHTML='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post'},2000)}}
+if(b){b.innerHTML='\u2705 Copied!';setTimeout(()=>{b.innerHTML='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Copy &amp; Post'},2000)}
+/* After 10 seconds, offer to mark as posted */
+const card=el.closest('.card');
+if(card){const stBtn=card.querySelector('.status-btn');
+if(stBtn&&!stBtn.classList.contains('posted')){
+setTimeout(()=>{
+if(!stBtn.classList.contains('posted')){
+stBtn.style.animation='pulse-posted 1s infinite';
+stBtn.textContent='Tap to mark Posted';
+stBtn.style.background='#dcfce7';stBtn.style.color='#16a34a';stBtn.style.borderColor='#86efac';
+}},10000)}}}
 function scrollToDate(d){const el=document.getElementById('arch-'+d);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
 
 /* Article copy by ID — extracts text from article-content */
@@ -2042,6 +2080,97 @@ if(btn){btn.innerHTML='&#x2705; Copied!';setTimeout(()=>{btn.innerHTML='<svg vie
 async function sharePost(id){const el=document.getElementById(id);const t=el.textContent;
 if(navigator.share){try{await navigator.share({text:t})}catch(e){}}
 else{cp(id)}}
+
+/* Learning System — track pattern preferences */
+function logSelection(id){
+const log=JSON.parse(localStorage.getItem('xlearn')||'[]');
+const parts=id.split('-');
+const patIdx=parseInt(parts[parts.length-1])||0;
+const labels=['A','B','C','D','E'];
+const label=labels[patIdx]||'?';
+const el=document.getElementById(id);
+if(!el)return;
+const card=el.closest('.card');
+const pill=card?card.querySelector('.pill'):null;
+const pillar=pill?pill.textContent.trim():'';
+log.push({t:Date.now(),p:label,pi:pillar,d:new Date().toISOString().split('T')[0]});
+if(log.length>100)log.splice(0,log.length-100);
+localStorage.setItem('xlearn',JSON.stringify(log));
+}
+
+function getPreferences(){
+const log=JSON.parse(localStorage.getItem('xlearn')||'[]');
+if(log.length<3)return null;
+const counts={};
+log.forEach(e=>{counts[e.p]=(counts[e.p]||0)+1});
+const total=log.length;
+const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+const favorite=sorted[0];
+const pct=Math.round(favorite[1]/total*100);
+const piCounts={};
+log.forEach(e=>{if(e.pi)piCounts[e.pi]=(piCounts[e.pi]||0)+1});
+const piSorted=Object.entries(piCounts).sort((a,b)=>b[1]-a[1]);
+return{fav:favorite[0],pct,total,piSorted,sorted};
+}
+
+/* Daily Streak */
+function updateStreak(){
+const today=new Date().toISOString().split('T')[0];
+let streak=JSON.parse(localStorage.getItem('xstreak')||'{"days":[],"current":0}');
+const posted=document.querySelectorAll('.status-btn.posted').length;
+if(posted>0&&!streak.days.includes(today)){
+streak.days.push(today);
+streak.days.sort();
+let cons=1;
+for(let i=streak.days.length-1;i>0;i--){
+const d1=new Date(streak.days[i]);
+const d2=new Date(streak.days[i-1]);
+const diff=(d1-d2)/(1000*60*60*24);
+if(diff===1)cons++;else break;
+}
+streak.current=cons;
+localStorage.setItem('xstreak',JSON.stringify(streak));
+}
+const row=document.getElementById('streak-row');
+if(!row)return;
+const pref=getPreferences();
+let prefHtml='';
+if(pref){prefHtml=`<div class="pref-info">Favorite: <span class="pref-fav">Pattern ${pref.fav}</span> (${pref.pct}%)</div>`}
+row.innerHTML=`<div class="streak-info"><span class="streak-fire">&#x1F525;</span><span class="streak-num">${streak.current||0}</span><span class="streak-label">day streak</span></div>${prefHtml}`;
+}
+setTimeout(updateStreak,200);
+
+/* Quick Post — show next post based on time */
+function initQuickPost(){
+const now=new Date();const h=now.getHours();
+let slot='morning';
+if(h>=10&&h<17)slot='midday';
+if(h>=17)slot='evening';
+const container=document.getElementById('quick-post');
+if(!container)return;
+const cards=document.querySelectorAll('#p0 .card');
+let next=null;let nextId='';
+cards.forEach(c=>{
+const btn=c.querySelector('.status-btn');
+if(btn&&!btn.classList.contains('posted')&&!next){next=c;nextId=c.id}
+});
+if(!next){container.innerHTML='<div class="qp-done">&#x2705; All posts done today!</div>';return}
+const firstPat=next.querySelector('.tweet-body');
+const text=firstPat?firstPat.textContent:'';
+const title=next.querySelector('.summary')?next.querySelector('.summary').textContent:next.querySelector('.pat-label')?next.querySelector('.pat-label').textContent:'Next Post';
+const timeBadge=next.querySelector('.time-slot')?next.querySelector('.time-slot').textContent:'';
+const previewText=text.length>200?text.substring(0,200)+'...':text;
+const textId=firstPat?firstPat.id:'';
+container.innerHTML=`<div class="qp-label">&#x26A1; NEXT UP</div>
+<div class="qp-title">${title}</div>
+<div class="qp-time">${timeBadge||slot}</div>
+<div class="qp-text">${previewText}</div>
+<div class="qp-actions">
+<button class="qp-btn qp-copy" onclick="if('${textId}')cp('${textId}');else toast('Open card first')">Copy</button>
+<button class="qp-btn qp-post" onclick="if('${textId}')copyAndPost('${textId}');else toast('Open card first')">Copy &amp; Post &#x2192;</button>
+</div>`;
+}
+setTimeout(initQuickPost,100);
 </script>
 </body>
 </html>
