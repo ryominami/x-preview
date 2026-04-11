@@ -300,6 +300,45 @@ background:#fff;min-height:48px;transition:.15s}
 /* Engage tab */
 .engage-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--R);margin-bottom:14px;padding:18px;box-shadow:var(--shd-sm);transition:.2s}
 .engage-card:hover{box-shadow:var(--shd-md);border-color:var(--bd-2);transform:translateY(-1px)}
+
+/* ── Auto Drafts (Today tab — Grok Air Scout AI-generated) ── */
+.auto-drafts-head{display:flex;align-items:center;justify-content:space-between;margin:20px 2px 12px;padding:0 4px}
+.auto-drafts-title{display:flex;align-items:center;gap:12px}
+.ad-icon{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#5b5bf7,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 6px 18px rgba(91,91,247,.35),inset 0 1px 0 rgba(255,255,255,.2);animation:adPulse 3s ease-in-out infinite}
+@keyframes adPulse{0%,100%{box-shadow:0 6px 18px rgba(91,91,247,.35),inset 0 1px 0 rgba(255,255,255,.2)}50%{box-shadow:0 6px 24px rgba(91,91,247,.5),inset 0 1px 0 rgba(255,255,255,.3)}}
+.ad-label{font-size:15px;font-weight:800;color:var(--tx);letter-spacing:-.3px;line-height:1.1}
+.ad-sub{font-size:11px;color:var(--sub);font-weight:600;margin-top:2px}
+.ad-badge{font-size:10px;font-weight:800;padding:6px 12px;border-radius:999px;background:linear-gradient(135deg,var(--ac-soft),#e5e8ff);color:var(--ac);border:1px solid rgba(91,91,247,.25);letter-spacing:.4px;text-transform:uppercase;box-shadow:var(--shd-sm)}
+
+.ad-card{background:#fff;border:1px solid var(--bd);border-radius:20px;padding:20px;margin-bottom:14px;box-shadow:var(--shd-md);overflow:hidden;position:relative;transition:.25s cubic-bezier(.4,0,.2,1)}
+.ad-card:hover{box-shadow:var(--shd-lg);border-color:var(--bd-2);transform:translateY(-2px)}
+.ad-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--ad-color,#5b5bf7),transparent 70%)}
+.ad-card::after{content:'';position:absolute;top:-60%;right:-30%;width:80%;height:140%;background:radial-gradient(circle,var(--ad-glow,rgba(91,91,247,.06)) 0%,transparent 50%);pointer-events:none;opacity:.8}
+.ad-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;position:relative;z-index:1}
+.ad-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#5b5bf7,#7c3aed,#a855f7);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;box-shadow:0 4px 14px rgba(91,91,247,.35),inset 0 1px 0 rgba(255,255,255,.2)}
+.ad-name{flex:1;min-width:0}
+.ad-name strong{display:block;font-size:14px;font-weight:800;color:var(--tx);letter-spacing:-.3px;line-height:1.2}
+.ad-name small{font-size:11px;color:var(--sub-2);font-weight:500}
+.ad-pillar{font-size:9px;font-weight:800;padding:5px 11px;border-radius:999px;letter-spacing:.4px;text-transform:uppercase;border:1px solid;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ad-body{font-family:inherit;font-size:15px;line-height:1.85;color:#0f172a;white-space:pre-wrap;word-wrap:break-word;margin:0;padding:0;background:none;border:none;letter-spacing:-.1px;font-weight:500;position:relative;z-index:1;-webkit-user-select:text}
+.ad-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--bd);position:relative;z-index:1}
+.ad-source{font-size:11px;color:var(--sub);font-weight:700;letter-spacing:.1px;display:flex;align-items:center;gap:4px}
+.ad-source::before{content:'\1F4DD';font-size:12px}
+.ad-len{font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;letter-spacing:.2px}
+.ad-len-ok{background:rgba(16,185,129,.12);color:#059669}
+.ad-len-warn{background:rgba(245,158,11,.12);color:#d97706}
+.ad-len-over{background:rgba(239,68,68,.12);color:#dc2626}
+.ad-actions{display:flex;gap:10px;margin-top:14px;position:relative;z-index:1}
+.ad-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:14px;font-size:14px;font-weight:800;cursor:pointer;min-height:52px;transition:.2s cubic-bezier(.4,0,.2,1);letter-spacing:-.1px;border:none}
+.ad-btn-copy{background:var(--ac-soft);color:var(--ac);border:1.5px solid rgba(91,91,247,.25)}
+.ad-btn-copy:hover{background:#e5e8ff;border-color:var(--ac);box-shadow:0 4px 14px rgba(91,91,247,.2)}
+.ad-btn-copy:active{transform:scale(.96)}
+.ad-btn-copy.done{background:linear-gradient(135deg,var(--ac),var(--ac-2));color:#fff;border-color:var(--ac);box-shadow:var(--shd-glow)}
+.ad-btn-post{flex:1.8;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:#fff;box-shadow:0 6px 20px rgba(15,23,42,.3),inset 0 1px 0 rgba(255,255,255,.15);position:relative;overflow:hidden}
+.ad-btn-post::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:.6s}
+.ad-btn-post:hover::before{left:100%}
+.ad-btn-post:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(15,23,42,.35),inset 0 1px 0 rgba(255,255,255,.2)}
+.ad-btn-post:active{transform:translateY(0) scale(.97);background:linear-gradient(135deg,#1d9bf0,#0ea5e9)}
 .reply-card{border-left:4px solid #1d9bf0}
 .quote-card{border-left:4px solid #7c3aed}
 .engage-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
@@ -355,7 +394,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
 <div id="app">
 <div class="w">
     <div class="hdr">
-        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-11 22:52</small></div>
+        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-11 22:57</small></div>
         <div class="hdr-stat">
             <button onclick="location.reload()" class="refresh-btn">&#x1F504;</button>
             <div class="stat-chip"><strong>0</strong> posts</div>
@@ -369,6 +408,20 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
             <div class="progress-info"><span>Today's Posts</span><span id="prog-text">0 drafts</span></div>
             <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
             <div class="streak-row" id="streak-row"></div>
+        </div>
+        <!-- Auto drafts from Grok Air Scout (Supabase) -->
+        <div id="auto-drafts-section" style="display:none">
+            <div class="auto-drafts-head">
+                <div class="auto-drafts-title">
+                    <span class="ad-icon">&#x2728;</span>
+                    <div>
+                        <div class="ad-label">Auto Drafts</div>
+                        <div class="ad-sub" id="auto-drafts-date">&mdash;</div>
+                    </div>
+                </div>
+                <span class="ad-badge">&#x1F916; AI</span>
+            </div>
+            <div id="auto-drafts-container"></div>
         </div>
         <div class="sec-title">&#x23F0; Schedule</div>
         <div class="sched-scroll">
@@ -384,7 +437,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
                 <div class="sched-time" style="background:#ede9fe;color:#5b21b6">&#x1F319; 21:00</div>
                 <div class="sched-theme" style="color:#94a3b8">Not planned</div>
             </div></div>
-        <div class="sec-title">&#x270F;&#xFE0F; Drafts</div>
+        <div class="sec-title">&#x270F;&#xFE0F; Manual Drafts</div>
         <div class="empty">No posts yet</div>
     </div>
     <div id="p1" class="pn"><div class="sec-title">&#x1F3AC; Media</div><div class="gg"><div class="gc"><video src="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P3-overseas-techniq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" download="FOZgh47rWxdQasO9uavyb_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P3-overseas-techniq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" download="tSJf-xUMmdpvZTPqCXJR6_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P3-overseas-techniq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" download="0FTK-aHwHHU0_xgc2vvSn_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc52/W2bNnFR9dFlOE0wJSLzBZ_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-round2</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc52/W2bNnFR9dFlOE0wJSLzBZ_output.mp4" download="W2bNnFR9dFlOE0wJSLzBZ_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc53/C63mxi02apJhNaG_cLKtT_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-round2</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc53/C63mxi02apJhNaG_cLKtT_output.mp4" download="C63mxi02apJhNaG_cLKtT_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc53/o4V9mWLFjcjTydrAeUIvg_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-round2</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc53/o4V9mWLFjcjTydrAeUIvg_output.mp4" download="o4V9mWLFjcjTydrAeUIvg_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc17/ouGunbygGu109BaEq4j6u_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-hq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc17/ouGunbygGu109BaEq4j6u_output.mp4" download="ouGunbygGu109BaEq4j6u_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc18/aT2ir9H_5zbSoST0Ytknz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-hq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc18/aT2ir9H_5zbSoST0Ytknz_output.mp4" download="aT2ir9H_5zbSoST0Ytknz_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc19/wDc6SjKLFiGI1PpeMA7s4_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-hq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc19/wDc6SjKLFiGI1PpeMA7s4_output.mp4" download="wDc6SjKLFiGI1PpeMA7s4_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">DL</a></div></div></div></div>
@@ -985,7 +1038,7 @@ Claude Codeから全部MCPで操作してるから、
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fef2f2;color:#e8384f">&#x1F525; Breakthrough</span><button class="status-btn" id="st-card-204" onclick="event.stopPropagation();toggleStatus('card-204')">Pending</button></div>
             <p class="summary">Seedance 2.0のマルチリファレンスでキャラ一貫性が別次元に</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/KakuDrop/status/2041085748401918462" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@KakuDrop</a><a class="x-chip" href="https://x.com/IqraSaifiii/status/2041160745778585662" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@IqraSaifiii</a><a class="x-chip" href="https://x.com/YaseenK7212/status/2041008659031830645" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@YaseenK7212</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/IqraSaifiii/status/2041160745778585662" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@IqraSaifiii</a><a class="x-chip" href="https://x.com/YaseenK7212/status/2041008659031830645" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@YaseenK7212</a><a class="x-chip" href="https://x.com/KakuDrop/status/2041085748401918462" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@KakuDrop</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -1117,7 +1170,7 @@ Kling 3.0: カメラワーク◎
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$3.94</span><button class="status-btn" id="st-card-205" onclick="event.stopPropagation();toggleStatus('card-205')">Pending</button></div>
             <p class="summary">日本語セリフが一番自然なAI動画モデルはどれか</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/Hoshimiko_AIart/status/2040401464649302295" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Hoshimiko_AIart</a><a class="x-chip" href="https://x.com/jboogx_creative/status/2040177902118228149" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@jboogx_creative</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/jboogx_creative/status/2040177902118228149" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@jboogx_creative</a><a class="x-chip" href="https://x.com/Hoshimiko_AIart/status/2040401464649302295" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Hoshimiko_AIart</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -1380,7 +1433,7 @@ Seedance 2.0は映像品質は高いけど、セリフは英語の方が得意�
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fef2f2;color:#e8384f">&#x1F525; Breakthrough</span><span class="cost-tag">$1.24</span><button class="status-btn" id="st-card-207" onclick="event.stopPropagation();toggleStatus('card-207')">Pending</button></div>
             <p class="summary">無料でどこまでやれる？Kling 3.0（66cr/日）vs Veo 3.1（Google Vids無料）</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/GilangR90760584/status/2040065641340911868" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@GilangR90760584</a><a class="x-chip" href="https://x.com/MustafyOf/status/2040042901288227037" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@MustafyOf</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/MustafyOf/status/2040042901288227037" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@MustafyOf</a><a class="x-chip" href="https://x.com/GilangR90760584/status/2040065641340911868" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@GilangR90760584</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -1636,7 +1689,7 @@ L3: 必要時だけ
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$2.24</span><button class="status-btn" id="st-card-209" onclick="event.stopPropagation();toggleStatus('card-209')">Pending</button></div>
             <p class="summary">海外クリエイターが発見したAI動画プロンプト技法を検証</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/doctorwasif/status/2039221897116725724" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@doctorwasif</a><a class="x-chip" href="https://x.com/Kling_ai/status/2038949432985637063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Kling_ai</a><a class="x-chip" href="https://x.com/onofumi_AI/status/2038213681067274555" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@onofumi_AI</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/Kling_ai/status/2038949432985637063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Kling_ai</a><a class="x-chip" href="https://x.com/doctorwasif/status/2039221897116725724" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@doctorwasif</a><a class="x-chip" href="https://x.com/onofumi_AI/status/2038213681067274555" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@onofumi_AI</a></div>
         </div>
         <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" download="FOZgh47rWxdQasO9uavyb_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" download="tSJf-xUMmdpvZTPqCXJR6_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" download="0FTK-aHwHHU0_xgc2vvSn_output.mp4">&#x2B07; MP4</a></div></div></div>
         <div class="card-drafts">
@@ -2522,7 +2575,7 @@ Claude Codeから一括で叩ける環境が完成した。
         <div class="card-top">
             <div class="card-meta"><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-215" onclick="event.stopPropagation();toggleStatus('card-215')">Pending</button></div>
             
-            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
         </div>
         <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">&#x2B07; Image</a></div></div></div>
         <div class="card-drafts">
@@ -2744,7 +2797,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-217" onclick="event.stopPropagation();toggleStatus('card-217')">Pending</button></div>
             <p class="summary">## コンセプト</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -3620,6 +3673,73 @@ function airRenderSummary(lines){
 }
 const PILLAR_COLOR={P1:'#ef4444',P2:'#5b5bf7',P3:'#f59e0b',P4:'#10b981'};
 const PILLAR_NAME={P1:'Breakthrough',P2:'Workflow',P3:'Compare',P4:'Insight'};
+const PILLAR_GLOW={P1:'rgba(239,68,68,.08)',P2:'rgba(91,91,247,.08)',P3:'rgba(245,158,11,.08)',P4:'rgba(16,185,129,.08)'};
+/* Today tab — Auto Drafts from Supabase */
+function tdCopyDraft(id,btn){
+    const el=document.getElementById(id);if(!el)return;
+    const t=el.textContent;
+    const done=function(){
+        if(btn){btn.innerHTML='&#x2705; Copied!';btn.classList.add('done');setTimeout(function(){btn.innerHTML='&#x1F4CB; Copy';btn.classList.remove('done')},1800)}
+        toast('Copied!');
+    };
+    if(navigator.clipboard)navigator.clipboard.writeText(t).then(done);
+    else{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);done()}
+}
+function tdPostDraft(id){
+    const el=document.getElementById(id);if(!el)return;
+    const t=el.textContent;
+    if(navigator.clipboard)navigator.clipboard.writeText(t);
+    toast('Copied! Opening X...');
+    setTimeout(function(){window.open('https://x.com/compose/post','_blank')},300);
+}
+let _tdDraftsLoaded=false;
+function loadTodayDrafts(){
+    if(_tdDraftsLoaded)return;
+    const section=document.getElementById('auto-drafts-section');
+    const container=document.getElementById('auto-drafts-container');
+    const dateEl=document.getElementById('auto-drafts-date');
+    if(!section||!container)return;
+    fetch(SB_URL+'/rest/v1/air_reports?select=report_date,drafts,status&genre=eq.ai-video&order=report_date.desc&limit=1',{headers:{apikey:SB_ANON,Authorization:'Bearer '+SB_ANON}})
+        .then(function(r){return r.json()})
+        .then(function(rows){
+            if(!rows||!rows.length)return;
+            const r=rows[0];
+            const drafts=r.drafts||[];
+            if(!drafts.length)return;
+            if(dateEl)dateEl.textContent=r.report_date+' \u30fb '+drafts.length+' drafts by Grok';
+            let html='';
+            drafts.forEach(function(d,i){
+                const pc=PILLAR_COLOR[d.pillar]||'#5b5bf7';
+                const pn=PILLAR_NAME[d.pillar]||d.pillar;
+                const pg=PILLAR_GLOW[d.pillar]||'rgba(91,91,247,.08)';
+                const len=d.char_count||0;
+                const lenCls=len<=280?'ad-len-ok':(len<=320?'ad-len-warn':'ad-len-over');
+                const id='td-draft-'+i;
+                html+='<div class="ad-card" style="--ad-color:'+pc+';--ad-glow:'+pg+'">'+
+                    '<div class="ad-head">'+
+                        '<div class="ad-avatar">R</div>'+
+                        '<div class="ad-name"><strong>Ryo</strong><small>@ryominami</small></div>'+
+                        '<span class="ad-pillar" style="background:'+pc+'18;color:'+pc+';border-color:'+pc+'33">'+airEsc(d.pillar)+' '+pn+'</span>'+
+                    '</div>'+
+                    '<pre id="'+id+'" class="ad-body">'+airEsc(d.body||'')+'</pre>'+
+                    '<div class="ad-foot">'+
+                        '<span class="ad-source">'+airEsc(d.source||'')+'</span>'+
+                        '<span class="ad-len '+lenCls+'">'+len+'/280</span>'+
+                    '</div>'+
+                    '<div class="ad-actions">'+
+                        '<button class="ad-btn ad-btn-copy" onclick="tdCopyDraft(\''+id+'\',this)">&#x1F4CB; Copy</button>'+
+                        '<button class="ad-btn ad-btn-post" onclick="tdPostDraft(\''+id+'\')">Post on X &#x2192;</button>'+
+                    '</div>'+
+                '</div>';
+            });
+            container.innerHTML=html;
+            section.style.display='block';
+            _tdDraftsLoaded=true;
+        })
+        .catch(function(e){console.error('auto-drafts fetch failed',e)});
+}
+/* Load on DOMContentLoaded (Today is the default tab) */
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',loadTodayDrafts)}else{loadTodayDrafts()}
 function airCopyDraft(id){
     const el=document.getElementById(id);if(!el)return;
     const t=el.textContent;
