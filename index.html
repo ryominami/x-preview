@@ -394,7 +394,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
 <div id="app">
 <div class="w">
     <div class="hdr">
-        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-25 12:47</small></div>
+        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-04-25 12:59</small></div>
         <div class="hdr-stat">
             <button onclick="location.reload()" class="refresh-btn">&#x1F504;</button>
             <div class="stat-chip"><strong>1</strong> posts</div>
@@ -453,19 +453,19 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
         <div class="pat open" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="rec-badge">&#x2B50; Best</span><span class="pat-label">Draft 1</span></div>
-                <div class="pat-right"><span class="cc-ok">210/280</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-warn">235/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
-            <div class="char-bar"><div class="char-fill" style="width:75%;background:#16a34a"></div></div>
+            <div class="char-bar"><div class="char-fill" style="width:84%;background:#d97706"></div></div>
             <div class="pat-b" style="display:block">
                 <div class="tweet-sim">
                     <div class="tweet-head">
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b0-0">Kling 4Kモード触ってみた🎬
-従来15秒制限はそのままだけど、ディテールの密度が前と別物になってる。
-同プロンプトで3.0と4Kを並べたら、肌の質感と布の解像感が想像以上だった。
-次は長尺合成のワークフローも試してみたい。</pre>
+                    <pre class="tweet-body" id="b0-0">Sora終了が明日4/26、代替探しがTL沸騰中。
+7モデル実検証から：リアル人物=Vidu Q3 Pro／アニメ=Seedance 2.0（LMSYS 1位）／長尺シネマ=Kling 4K。
+コスト差も激しく、Vidu Q3 Proは料金表300crに対して実測90cr/10s 1080p。
+比較マトリクスは画像で👇</pre>
                 </div>
                 
                 
@@ -485,19 +485,19 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 2</span></div>
-                <div class="pat-right"><span class="cc-warn">242/280</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-warn">248/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
-            <div class="char-bar"><div class="char-fill" style="width:86%;background:#d97706"></div></div>
+            <div class="char-bar"><div class="char-fill" style="width:89%;background:#d97706"></div></div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
                     <div class="tweet-head">
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b0-1">Klingで長尺キャラの顔が崩れて諦めてた人、4K時代でも参照画像で挙動が変わる。
-正面顔参照より、後ろ姿1枚＋手のみ1枚の方が安定して通った。
-Seedance R2Vで先に実証したパターンが、4Kでもそのまま効いてる。
-詰まってた人は参照画像から見直すと早いかも。</pre>
+                    <pre class="tweet-body" id="b0-1">Klingで長尺キャラ顔が崩れる声、4Kリリース直後（公式🔖500超）で再燃。
+正面顔の参照画像→422弾きの定番。後ろ姿1枚＋手のみ1枚に差し替えたら、4Kでも10シーン中9シーン安定。
+Seedance R2Vで通ったパターンが、Kling 4Kにそのまま移植できた。
+回避10項目はこれ👇</pre>
                 </div>
                 
                 
@@ -517,19 +517,25 @@ Seedance R2Vで先に実証したパターンが、4Kでもそのまま効いて
         <div class="pat" onclick="toggle(this)">
             <div class="pat-h">
                 <div class="pat-left"><span class="pat-label">Draft 3</span></div>
-                <div class="pat-right"><span class="cc-warn">230/280</span><span class="pat-arrow">&#x25BC;</span></div>
+                <div class="pat-right"><span class="cc-over">598/280</span><span class="pat-arrow">&#x25BC;</span></div>
             </div>
-            <div class="char-bar"><div class="char-fill" style="width:82%;background:#d97706"></div></div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
             <div class="pat-b" style="display:none">
                 <div class="tweet-sim">
                     <div class="tweet-head">
                         <div class="tweet-avatar">R</div>
                         <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
                     </div>
-                    <pre class="tweet-body" id="b0-2">Vidu Q3 Pro、料金表だと300cr/回って書いてあるけど、実測は90cr/10s 1080pで通った。
-premium_v2プランで5本生成して450cr。
-月1,600crあれば余裕って思って始めたら、I2V検証で一気に溶けた経験がある。
-コスト読みは料金表より実測が早かった。</pre>
+                    <pre class="tweet-body" id="b0-2">1. 顔正面のクローズアップを参照に使わない（422弾き多発）
+2. 後ろ姿1枚＋手のみ1枚を必ず含める（5枚参照セット必須）
+3. 全身図（前面）+ 全身図（背面）+ 斜め45度をベース構成に
+4. 「fear / tears / trembling」→「determined / warm expression」へ置換
+5. 動き指示は短プロンプト（Kling特性）／詳細指定はSeedance（特性差）
+6. キャラ識別子（名前・服装の表記）はシーン横断で完全固定
+7. 1ショット5-8秒に分割、長尺はフレーム抽出→次ショット起点で連結
+8. 表情変化は「行動」で表現（涙→雨に濡れる、震え→拳を握る）
+9. R2V時の elements[] は4枚以内（多すぎると一貫性低下）
+10. 1シーン勝負しない、必ず10シーンで再現性確認</pre>
                 </div>
                 
                 
@@ -541,6 +547,38 @@ premium_v2プランで5本生成して450cr。
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
                 </button>
                 <button class="btn-share" onclick="event.stopPropagation();sharePost('b0-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="pat-label">Draft 4</span></div>
+                <div class="pat-right"><span class="cc-warn">265/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:95%;background:#d97706"></div></div>
+            <div class="pat-b" style="display:none">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b0-3">クレジットが想定より早く溶ける論争、Figma Make等で再燃中。
+Vidu Q3 Proも料金表は300cr/回だけど、premium_v2の実測は90cr/10s 1080pだった。
+月1,600crあれば余裕って思って始めたら、I2V検証5本で450cr消費。
+主要モデル別の実測コスト表まとめた👇 始める前の試算は表より実測。</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b0-3')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b0-3')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b0-3')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
                 </button>
             </div>
@@ -1166,7 +1204,7 @@ Claude Codeから全部MCPで操作してるから、
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fef2f2;color:#e8384f">&#x1F525; Breakthrough</span><button class="status-btn" id="st-card-204" onclick="event.stopPropagation();toggleStatus('card-204')">Pending</button></div>
             <p class="summary">Seedance 2.0のマルチリファレンスでキャラ一貫性が別次元に</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/IqraSaifiii/status/2041160745778585662" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@IqraSaifiii</a><a class="x-chip" href="https://x.com/KakuDrop/status/2041085748401918462" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@KakuDrop</a><a class="x-chip" href="https://x.com/YaseenK7212/status/2041008659031830645" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@YaseenK7212</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/KakuDrop/status/2041085748401918462" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@KakuDrop</a><a class="x-chip" href="https://x.com/YaseenK7212/status/2041008659031830645" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@YaseenK7212</a><a class="x-chip" href="https://x.com/IqraSaifiii/status/2041160745778585662" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@IqraSaifiii</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -1298,7 +1336,7 @@ Kling 3.0: カメラワーク◎
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$3.94</span><button class="status-btn" id="st-card-205" onclick="event.stopPropagation();toggleStatus('card-205')">Pending</button></div>
             <p class="summary">日本語セリフが一番自然なAI動画モデルはどれか</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/jboogx_creative/status/2040177902118228149" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@jboogx_creative</a><a class="x-chip" href="https://x.com/Hoshimiko_AIart/status/2040401464649302295" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Hoshimiko_AIart</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/Hoshimiko_AIart/status/2040401464649302295" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Hoshimiko_AIart</a><a class="x-chip" href="https://x.com/jboogx_creative/status/2040177902118228149" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@jboogx_creative</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -1561,7 +1599,7 @@ Seedance 2.0は映像品質は高いけど、セリフは英語の方が得意�
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fef2f2;color:#e8384f">&#x1F525; Breakthrough</span><span class="cost-tag">$1.24</span><button class="status-btn" id="st-card-207" onclick="event.stopPropagation();toggleStatus('card-207')">Pending</button></div>
             <p class="summary">無料でどこまでやれる？Kling 3.0（66cr/日）vs Veo 3.1（Google Vids無料）</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/GilangR90760584/status/2040065641340911868" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@GilangR90760584</a><a class="x-chip" href="https://x.com/MustafyOf/status/2040042901288227037" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@MustafyOf</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/MustafyOf/status/2040042901288227037" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@MustafyOf</a><a class="x-chip" href="https://x.com/GilangR90760584/status/2040065641340911868" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@GilangR90760584</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -1817,7 +1855,7 @@ L3: 必要時だけ
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$2.24</span><button class="status-btn" id="st-card-209" onclick="event.stopPropagation();toggleStatus('card-209')">Pending</button></div>
             <p class="summary">海外クリエイターが発見したAI動画プロンプト技法を検証</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/doctorwasif/status/2039221897116725724" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@doctorwasif</a><a class="x-chip" href="https://x.com/Kling_ai/status/2038949432985637063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Kling_ai</a><a class="x-chip" href="https://x.com/onofumi_AI/status/2038213681067274555" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@onofumi_AI</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/onofumi_AI/status/2038213681067274555" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@onofumi_AI</a><a class="x-chip" href="https://x.com/doctorwasif/status/2039221897116725724" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@doctorwasif</a><a class="x-chip" href="https://x.com/Kling_ai/status/2038949432985637063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Kling_ai</a></div>
         </div>
         <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" download="FOZgh47rWxdQasO9uavyb_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" download="tSJf-xUMmdpvZTPqCXJR6_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" download="0FTK-aHwHHU0_xgc2vvSn_output.mp4">&#x2B07; MP4</a></div></div></div>
         <div class="card-drafts">
@@ -2703,7 +2741,7 @@ Claude Codeから一括で叩ける環境が完成した。
         <div class="card-top">
             <div class="card-meta"><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-215" onclick="event.stopPropagation();toggleStatus('card-215')">Pending</button></div>
             
-            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
         </div>
         <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">&#x2B07; MP4</a></div><div class="mg-item"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">&#x2B07; Image</a></div></div></div>
         <div class="card-drafts">
@@ -2925,7 +2963,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-217" onclick="event.stopPropagation();toggleStatus('card-217')">Pending</button></div>
             <p class="summary">## コンセプト</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
